@@ -49,10 +49,11 @@ Post.destroy_all
 (1..20).each do |id|
     Post.create!(
         #id: id,
+        title: Faker::Lorem.sentence(word_count: 5),
         user_id: rand(1..10),
         channel_id: rand(1..20),
-        content: Faker::Lorem.paragraph(sentence_count: 3)
+        content: Faker::Twitter.status(include_photo: true)
     )
 end
 
-puts "#{Post.count}comments created"
+puts "#{Post.count}posts created"
