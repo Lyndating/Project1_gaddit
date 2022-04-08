@@ -1,0 +1,31 @@
+<%= provide(:title, "Sign up")%>
+<h1>Sign up</h1>
+
+<div class="form">
+
+<% if @user.errors.any? %>
+    <div id="error_explaination">
+        The form contains <%= pluralize(@user.errors.count, "error")%>
+    </div>
+    <ol>
+    <%= @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ol>
+<% end %>
+<!--securtiy issue: need to fix the error msg regards "Email has been taken"-->
+
+<%= form_for @user do |f| %>
+
+    <%=f.label :name %>
+    <%= f.text_field :name, :required => true, :class => "form-control" %>   
+    <%=f.label :email %>
+    <%= f.text_field :email, :class => "form-control" %>
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => "form-control" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => "form-control" %>
+    <%= f.submit "Create My Account", :class => "form-btn"%>
+
+<% end %>
+</div>
