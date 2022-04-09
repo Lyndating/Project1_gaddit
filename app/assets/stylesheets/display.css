@@ -7,7 +7,10 @@ body {
 }
 h1 {
     text-align: center;
+    font-weight: 800;
 }
+
+
 .sign-up {
     margin: 0 auto;
     font-size: 30px;
@@ -26,10 +29,71 @@ h1 {
 label {
     text-align: center;
     margin-left: 40%;
+    font-weight: bold;
 }
 .form-btn {
     font-size: 30px;
     font-weight: 300px;
     display: block;
     margin: 20px auto;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgb(56, 56, 142);
+    color: white;
+}
+
+.form-btn a{
+    color: white;
+    text-decoration: none;
+}
+.form p {
+    text-align: center;
+}
+
+.signup-link {
+    font-weight: bold;
+    color: rgb(47, 47, 132);
+    
+}
+.container{
+    background-color: lightgray;
+    width: 80vw;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10%;
+    height: 40vh;
+    display:flex;
+    justify-content: center;
+    position:relative;
+    border: none;
+    border-radius: 12px;
+}
+
+.content {
+    width: 200px;
+    height: 200px; 
+    display: block;
+    text-align: center;
+    margin: -100px 0 0 -100px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+}
+.logo {
+    font-weight: 600;
+    top:0;
+    left:0;
+    position: absolute;
+}
+
+nav {
+    position: absolute;
+    display: flex;
+    right: 0;
+    top:0;
+}
+nav a {
+    margin: 0 10px;
 }
