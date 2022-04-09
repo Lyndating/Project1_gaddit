@@ -8,4 +8,9 @@ class User < ApplicationRecord
     validates :password, :presence => true, :length=> {minimum: 6}
     # has_and_belongs_to_many :channel
     has_many :post
+
+    def current_user
+        return unless session[:user_id]
+        @current_user ||= User.find(session[:user_id])
+    end
 end

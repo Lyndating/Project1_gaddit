@@ -6,12 +6,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params 
     if @user.save
-      redirect_to users_path
+      redirect_to users_path, :success => "Your Account was Created Successfully!"
     else 
-      render :new
+      render :new, :danger => "Invalid email/password combination" 
     end
   end
 
+  def show
+    puts "here", @current_user
+    render :show
+  end
 
   private
   def user_params

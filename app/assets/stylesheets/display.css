@@ -5,11 +5,41 @@ body {
     background-color: rgb(241, 230, 216);
     font-family: 'Montserrat', sans-serif;
 }
+
 h1 {
     text-align: center;
     font-weight: 800;
 }
 
+.header {
+    height: 10%;
+    width: 100vw;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header nav{
+    position: absolute;
+
+}
+.logo {
+    font-weight: 600;
+    top:0;
+    left:5%;
+    position: absolute;
+}
+
+nav {
+    position: absolute;
+    display: flex;
+    top:50%;
+    right: 5%;
+}
+nav a {
+    margin: 20px 10px;
+}
 
 .sign-up {
     margin: 0 auto;
@@ -81,19 +111,8 @@ label {
     top: 50%;
     left: 50%;
 }
-.logo {
-    font-weight: 600;
-    top:0;
-    left:0;
-    position: absolute;
-}
 
-nav {
+.page-content {
     position: absolute;
-    display: flex;
-    right: 0;
-    top:0;
-}
-nav a {
-    margin: 0 10px;
+    margin-top: 5%;
 }
