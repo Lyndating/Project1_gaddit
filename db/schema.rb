@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_055955) do
 
   create_table "channels_users", id: false, force: :cascade do |t|
     t.integer "channel_id"
-    t.integer "users_id"
+    t.integer "user_id"
   end
 
   create_table "posts", force: :cascade do |t|

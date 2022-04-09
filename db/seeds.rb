@@ -1,18 +1,24 @@
 require "faker"
 
+Post.destroy_all
+Channel.destroy_all
 User.destroy_all
+
+
+
 
 (1..10).each do |id |
     User.create!(
         #id: id,
         name: Faker::Name.name,
-        email: Faker::Internet.email
+        email: Faker::Internet.email,
+        password: "chicken"
     )
 end
 puts "#{User.count}users created"
 
 
-Channel.destroy_all
+
 
 (1..5).each do |id|
     Channel.create!(
@@ -44,14 +50,14 @@ end
 
 puts "#{Channel.count}channels created"
 
-Post.destroy_all
+
 
 (1..20).each do |id|
     Post.create!(
         #id: id,
         title: Faker::Lorem.sentence(word_count: 5),
-        user_id: rand(1..10),
-        channel_id: rand(1..20),
+        user_id: User.all.ids.sample,
+        channel_id: Channel.all.ids.sample,
         content: Faker::Twitter.status(include_photo: true)
     )
 end
