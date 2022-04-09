@@ -2,7 +2,10 @@
 <h1>Log in</h1>
 
 <div class="form">
-    <% render "layouts/flash"%>
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
+    
     <%= form_tag login_path do %>
         <%= label_tag :email %>
         <%= email_field_tag :email, "",class: "form-control"%>

@@ -10,7 +10,8 @@ class SessionController < ApplicationController
       puts @user
       redirect_to user_path(@user)
     else
-      render :new, :danger => "Invalid email/password combination"
+      flash[:notice] = "Invalid email/password combination"
+      render :new
     end
   end 
 

@@ -116,3 +116,8 @@ label {
     position: absolute;
     margin-top: 5%;
 }
+
+.notice {
+    color: red;
+    font-weight: bold;
+}
