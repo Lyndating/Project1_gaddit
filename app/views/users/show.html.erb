@@ -2,7 +2,10 @@
     <h2>Welcome <%= @current_user.name %>!</h2>
 <% end %>
 
-<>
 <div class="post-list">
-
+    <ul>
+    <% @current_user.posts.order(created_at: :desc).limit(20).each do |post|%>
+    <li>Title: <%= link_to post.title, post_path(post.id)%> <br> Posted created at <%= time_ago_in_words(post.created_at) %> ago</li>
+    <% end %>
+    </ul>
 </div>

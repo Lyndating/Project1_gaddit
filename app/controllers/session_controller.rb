@@ -8,7 +8,7 @@ class SessionController < ApplicationController
     if @user && @user.authenticate(params[:password])
       log_in @user
       puts @user
-      redirect_to user_path(@user)
+      redirect_to user_path(@user.id)
     else
       flash[:notice] = "Invalid email/password combination"
       render :new
