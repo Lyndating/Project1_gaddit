@@ -53,13 +53,13 @@ puts "#{Channel.count}channels created"
 
 User.all.each do |user|
     Channel.all.each do |channel|
-        (1..20).each do |id|
+        (1..15).each do |id|
             Post.create!(
             #id: id,
                 title: Faker::Lorem.sentence(word_count: 5),
                 user_id: User.all.ids.sample,
                 channel_id: Channel.all.ids.sample,
-                content: Faker::Twitter.status(include_photo: true)
+                content: Faker::Lorem.paragraph_by_chars(number:256, supplemental: false)
             )
         end
     end

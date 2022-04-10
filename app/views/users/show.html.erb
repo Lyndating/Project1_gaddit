@@ -1,11 +1,50 @@
+
 <% if @current_user.present? %>
-    <h2>Welcome <%= @current_user.name %>!</h2>
+    <h1 id = "user-header">Welcome <%= @current_user.name %>!</h1>
 <% end %>
 
-<div class="post-list">
+<div class="create-post">
+    <button class="py-2 px-4 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"><%= link_to "Create Post", new_post_path %> </button>
+</div>
+
+
+<section>
+
+<div class="channel-list md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800 bg-sky-200 ">
     <ul>
+        <% @current_user.channels.each do |channel| %>
+            <li class="flex py-4 first:pt-0 last:pb-0"># <%= link_to channel.name, channel_path %></li>
+        <% end %>
+    </ul>   
+
+</div>
+
+</section>
+
+
+<div class=" post-list space-y-5 bg-sky-200">
+    <ul role="list" class="p-6 divide-y divide-slate-200 space-y-5">
     <% @current_user.posts.order(created_at: :desc).limit(20).each do |post|%>
-    <li>Title: <%= link_to post.title, post_path(post.id)%> <br> Posted created at <%= time_ago_in_words(post.created_at) %> ago</li>
+        <div class= "p-3 bg-white shadow-lg rounded-lg">
+        <li class="flex py-4 first:pt-0 last:pb-0">
+            <%= image_tag "https://avatars.githubusercontent.com/u/36207117?v=4",:class => "h-10 w-10 rounded-full"%>
+            <div class="ml-3 overflow-hidden">
+                <p class="text-sm font-medium text-slate-900">
+                    Title: <%= link_to post.title, post_path(post.id)%>
+                </p>
+                <p class="text-sm text-slate-500 truncate">
+                    Posted created at <%= time_ago_in_words(post.created_at) %> ago
+                </p>
+                <p class="text-sm text-slate-500 truncate">
+                    <%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %>
+                </p>
+            </div>
+        </li>
+        </div>
     <% end %>
     </ul>
 </div>
+
+<button class = "py-2 px-4 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" type="button" id="back-to-top" href="#">
+  Back to Top
+</button>

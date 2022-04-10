@@ -1,9 +1,8 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
-
-body {
-    background-color: rgb(241, 230, 216);
-    font-family: 'Montserrat', sans-serif;
+#user-header{
+    font-weight: 800;
+    font-size: 50px;
+    text-align:left;
 }
 
 h1 {
@@ -104,7 +103,7 @@ label {
 .content {
     width: 200px;
     height: 200px; 
-    display: block;
+    display: block;s
     text-align: center;
     margin: -100px 0 0 -100px;
     position:absolute;
@@ -115,9 +114,47 @@ label {
 .page-content {
     position: absolute;
     margin-top: 5%;
+    margin-left: 5%;
 }
 
 .notice {
     color: red;
     font-weight: bold;
 }
+
+#back-to-top {
+    position: fixed;
+    right: 50px;
+    bottom: 30px;
+}
+
+.channel-list{
+    border-radius: 12px;
+    width: 80%;
+}
+.post-list {
+    width: 80%;
+
+} 
+.create-post {
+    display: flex;
+    margin-left:69%;
+    margin-bottom: 20px;
+}
+.create-post-btn{
+
+    font-size: 30px;
+    font-weight: 300px;
+    display: block;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.create-post-btn a{
+    color: white;
+    text-decoration: none;
+}
+
+
+

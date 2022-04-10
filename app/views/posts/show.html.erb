@@ -1,2 +1,7 @@
 <h1><%= @post.title%></h1>
 
+<h3>Posted created at <%= time_ago_in_words(@post.created_at) %> ago</h3>
+<div class="post-content">
+    <p><%= @post.content %>
+</div>
+    
