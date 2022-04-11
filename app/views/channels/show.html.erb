@@ -1,0 +1,24 @@
+<h1 class ="uppercase tracking-wide  text-sky-600 font-bold">Channel: <%= @channel.name%></h1>
+
+<div class=" post-list space-y-5 bg-sky-200 rounded-xl">
+    <ul role="list" class="p-6 divide-y divide-slate-200 space-y-5">
+    <% @channel.posts.order(created_at: :desc).each do |post|%>
+        <div class= "p-3 bg-white shadow-lg rounded-lg">
+        <li class="flex py-4 first:pt-0 last:pb-0">
+            <%= image_tag "https://avatars.githubusercontent.com/u/36207117?v=4",:class => "h-10 w-10 rounded-full"%>
+            <div class="ml-3 overflow-hidden">
+                <p class="text-sm font-medium text-slate-900">
+                    Title: <%= link_to post.title, post_path(post.id)%>
+                </p>
+                <p class="text-sm text-slate-500 truncate">
+                    Posted created at <%= time_ago_in_words(post.created_at) %> ago
+                </p>
+                <p class="text-sm text-slate-500 truncate">
+                    <%= truncate post.content, length: 80%>...<%=link_to "read more", post_path(post.id) %>
+                </p>
+            </div>
+        </li>
+        </div>
+    <% end %>
+    </ul>
+</div>

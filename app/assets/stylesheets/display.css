@@ -1,4 +1,4 @@
-
+/* Header */
 #user-header{
     font-weight: 800;
     font-size: 50px;
@@ -9,7 +9,11 @@ h1 {
     text-align: center;
     font-weight: 800;
 }
+.channel-title {
+    font-size: 30px;
+    text-align: left;
 
+}
 .header {
     height: 10%;
     width: 100vw;
@@ -33,6 +37,7 @@ h1 {
     margin-top: 100px;
     margin-left: 5%;
     padding: 16px;
+    width: 80vw;
 }
 
 .header nav{
@@ -50,13 +55,13 @@ h1 {
 nav {
     position: absolute;
     display: flex;
-    top:50%;
+    top:15%;
     right: 5%;
 }
 nav a {
     margin: 20px 10px;
 }
-
+/* Signup page */
 .sign-up {
     margin: 0 auto;
     font-size: 30px;
@@ -72,13 +77,13 @@ nav a {
     border-radius: 5px;
     border: 2px solid lightslategrey;
 }
-label {
+.sign-up-form form label {
     text-align: center;
     margin-left: 40%;
     font-weight: bold;
 }
 .form-btn {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 300px;
     display: block;
     margin: 20px auto;
@@ -86,7 +91,6 @@ label {
     border-radius: 12px;
     text-decoration: none;
     cursor: pointer;
-    background-color: rgb(56, 56, 142);
     color: white;
 }
 
@@ -103,8 +107,7 @@ label {
     color: rgb(47, 47, 132);
     
 }
-.container{
-    background-color: lightgray;
+.home-container{
     width: 80vw;
     text-align: center;
     margin: 0 auto;
@@ -115,11 +118,27 @@ label {
     position:relative;
     border: none;
     border-radius: 12px;
+    vertical-align: middle;
 }
 
+.home-content {
+    width: 100%;
+    margin: 0 auto;
+}
+.home-content {
+    font-size: 30px;
+}
+.home-content button{
+    display: block;
+    margin: 60px auto;
+}
+.home-title{
+    font-size: 2.2rem;
+    line-height: 1.75rem;
+}
 .content {
     width: 200px;
-    height: 200px; 
+    height: 50vh; 
     display: block;
     text-align: center;
     margin: -100px 0 0 -100px;
@@ -174,4 +193,39 @@ label {
 }
 
 
+/* post new page */
+post-container {
+    margin-top: 20vh;
+    width: 50vw;
+    height: 70vh;
+    background: lightblue;
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12); 
+}
 
+.new-post header {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    padding: 17px 0;
+    border-bottom: 1px solid #bfbfbf ;
+}
+.new-post-content {
+    margin: 15px 50px 0 50px;
+}
+.new-post-content label{
+    display: block;
+    margin: 10px auto; 
+}
+
+.new-post-content input{
+    height: 30px;
+    border-radius: 4px;
+    width: 60vw;
+}
+
+.new-post-content textarea {
+    border-radius: 4px;
+    height: 200px;
+    width: 60vw;
+}

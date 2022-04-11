@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
     belongs_to :channel, :optional => true
-    belongs_to :user
+    belongs_to :user, :optional => true
     validates :user_id, presence: true
     validates :content, presence: true
 end

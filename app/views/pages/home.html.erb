@@ -1,12 +1,14 @@
 
 
-<div class="home-container bg-white rounded-lg shadow-lg space-between flex items-center">
-    <%= image_tag("logo.gif", alt: "Home", class: 'block mx-auto h-48 sm:mx-0 sm:shrink-0')%>
-    <div class="text-center space-y-2 sm:text-left">
-        <div class="content space-y-0.5">
-            <p class= "text-lg text-black font-semibold">Welcome to Gaddit</p>
-            <p class="text-slate-500 font-medium">Join us today!</p>
+<div class="home-container max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div class="home-content md:flex">
+        <div class="md:shrink-0">
+            <%= image_tag("logo.gif", alt: "Home", class: 'h-48 w-full object-cover md:h-full md:w-48')%>
         </div>
-        <button lass = "py-1 px-4 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" ><%= link_to "Sign up now!", new_user_path%></button>
+        <div class="text-center p-8">
+            <p class= "home-title uppercase tracking-wide  text-sky-600 font-bold">Welcome to Gaddit</p>
+            <p class="mt-2 text-slate-500">Join us today!</p>
+            <button class = "py-1 px-2 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" ><%= link_to "Sign up now!", new_user_path%></button>
+        </div>
     </div>
 </div>

@@ -1,20 +1,58 @@
-<div class="post-container flex font-sans w-120 bg-sky-200 shadow-lg rounded-lg gap-2 grid-cols-2 space-y-4">
-    <div class="post-header flex-none relative">
-        <h1>Create a Post</h1>
+
+<div class="post-container">
+    <div class="wrapper">
+        <section class="new-post bg-sky-100 rounded-lg shadow-lg">
+            <header>Create Post</header>
+            <%=form_for @post do |f|%>
+                <div class="new-post-content ">
+                        <%= f.label :channel_id %>
+                        <%= f.select :channel_id, Channel.pluck(:name, :id), :include_blank => true %>
+                        <%= f.label :title%>
+                        <%= f.text_field :title%>
+
+                        <%=f.label :content%>
+                        <%=f.text_area(:content)%>
+                </div>
+                
+                <div class ="new-post-options">
+                    <p>Add to Your Post</p>
+                    <ul class = "new-post-list"></ul>
+                        <li><%= image_tag "G-1.png"%></li>
+                        <li><%= image_tag "G-2.png"%></li>
+                        <li><%= image_tag "G-3.png"%></li>
+                    </ul>
+                </div>
+                <%= f.submit %>
+
+            <% end %>
+            </form>
+            
+
+        </section>
+    
     </div>
-    <div class="channel-link-list flex-auto p-6 text">
-        <div class="dropdown-list flex flex-wrap ">
-        <%= form_for @post do |f| %>
-            <%= f.label :channel_id %>
-            <%= f.select :channel_id, Channel.pluck(:name, :id), :include_blank => true %>
-        <%= f.submit %>
-        <% end %>
+</div>
+
+
+
+
+
+
+        
         </div>
 
         <div class="post-content shadow-md rounded-lg">
-            <div class = "content-title text-lg font-serif text-slate-500 shadow-lg bg-white rounded-lg">
+            <div class="post-main-part">
+                <div class="post-icons">
+                    <button class="post-btns">Post</button>
+                    <button class="post-btns">Image</button>
+                    <button class="post-btns">Video</button>
+                </div>
+            </div>
+            <div class = "post-title text-lg font-serif text-slate-500 shadow-lg bg-white rounded-lg">
                 <input class ="rounded-lg"maxlength="300" placeholder = "Title" rows ="1" style = "height: 30px;"></input>
             </div>
+            input
         </div>
     </div>
 </div>

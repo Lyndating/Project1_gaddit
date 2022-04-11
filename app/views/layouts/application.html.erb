@@ -15,16 +15,22 @@
   <div class="fix-header">
     <div class="header p-4  shadow-lg space-between">
       <div class  ="shrink-0">
-        <h1 class ="h-12 w-12"><%= link_to image_tag("logo.gif", width: "50", alt: "Home"), root_path %></h1>
-      </div>
-      <div class="nav shrink-0"></div>
-      <nav class="font-medium">
+        <h1 class ="h-12 w-12">
         <% unless @current_user.present? %>
-          <%= link_to "Log In ", login_path %>
-          <%= link_to "Sign Up ",new_user_path %>
+          <%= link_to image_tag("logo.gif", width: "50", alt: "Home"), root_path %>
         <% else %>
-          <%= link_to "Profile", edit_user_path(@current_user.id) %>
-          <%= link_to "Log out", login_path, :method => "delete" %>
+          <%= link_to image_tag("logo.gif", width: "50", alt: "Home"), user_path(@current_user.id) %>
+        <% end %>
+        </h1>
+      </div>
+      <div class="nav">
+      <nav class="font-medium flex justify-center space-x-4">
+        <% unless @current_user.present? %>
+          <%= link_to "Log In ", login_path, :class=> "font-medium text-white-700 rounded-lg hover:bg-sky-100 hover:text-white-900" %>
+          <%= link_to "Sign Up ",new_user_path,:class=> "font-medium text-white-700 rounded-lg hover:bg-sky-100 hover:text-white-900" %>
+        <% else %>
+          <%= link_to "Profile", edit_user_path(@current_user.id), :class=> "font-medium text-white-700 rounded-lg hover:bg-sky-100 hover:text-white-900" %>
+          <%= link_to "Log out", login_path, :method => "delete" ,:class=> "font-medium text-white-700 rounded-lg hover:bg-sky-100 hover:text-white-900"%>
         <% end %>
       </nav>
       </div>

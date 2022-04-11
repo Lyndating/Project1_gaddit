@@ -1,4 +1,4 @@
-<%= provide(:title, "Sign up")%>
+
 <h1>Sign up</h1>
 
 <div class="form">
@@ -15,19 +15,19 @@
 <% end %>
 <!--securtiy issue: need to fix the error msg regards "Email has been taken"-->
 
+<div class="sign-up-form"> 
 <%= form_for @user do |f| %>
 
-    <%=f.label :name, :class=>" block" do %>
-    <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700" >Name </span>
-    <% end %>
-    <%= f.text_field :name, :required => true, :class => "form-control mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"%>   
+    <%=f.label :name %>
+    <%= f.text_field :name, :required => true, :class => "form-control  px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1"%>   
     <%=f.label :email %>
-    <%= f.text_field :email, :class => "form-control" %>
+    <%= f.text_field :email, :class => "form-control  px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1" %>
     <%= f.label :password %>
-    <%= f.password_field :password, :class => "form-control" %>
+    <%= f.password_field :password, :class => "form-control  px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1"%>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :class => "form-control" %>
-    <%= f.submit "Create My Account", :class => "form-btn"%>
+    <%= f.password_field :password_confirmation, :class => "form-control  px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1"%>
+    <%= f.submit "Create My Account", :class => "form-btn py-1 px-2 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"%>
 
 <% end %>
+</div>
 </div>
