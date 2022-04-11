@@ -13,7 +13,7 @@ h1 {
 .header {
     height: 10%;
     width: 100vw;
-    color: white;
+    color: lightblue;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -129,8 +129,13 @@ label {
 }
 
 .channel-list{
-    border-radius: 12px;
+    border-radius: 4px;
+    border: 1px solid lightblue;
+    display: flex;
+    margin-bottom: 16px;
+    padding: 8px;
     width: 80%;
+    vertical-align: baseline;
 }
 .post-list {
     width: 80%;

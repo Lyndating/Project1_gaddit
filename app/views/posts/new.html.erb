@@ -1,2 +1,21 @@
-<h1>Post#new</h1>
-<p>Find me in app/views/post/new.html.erb</p>
+<div class="post-container flex font-sans w-120 bg-sky-200 shadow-lg rounded-lg gap-2 grid-cols-2 space-y-4">
+    <div class="post-header flex-none relative">
+        <h1>Create a Post</h1>
+    </div>
+    <div class="channel-link-list flex-auto p-6 text">
+        <div class="dropdown-list flex flex-wrap ">
+        <%= form_for @post do |f| %>
+            <%= f.label :channel_id %>
+            <%= f.select :channel_id, Channel.pluck(:name, :id), :include_blank => true %>
+        <%= f.submit %>
+        <% end %>
+        </div>
+
+        <div class="post-content shadow-md rounded-lg">
+            <div class = "content-title text-lg font-serif text-slate-500 shadow-lg bg-white rounded-lg">
+                <input class ="rounded-lg"maxlength="300" placeholder = "Title" rows ="1" style = "height: 30px;"></input>
+            </div>
+        </div>
+    </div>
+</div>
+
