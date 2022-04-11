@@ -1,9 +1,12 @@
 
 
-<div class="container">
-    <div class="content">
-        <h1>Welcome to Gaddit</h1>
-        <h3>Join us today!</h3>
-        <button lass = "py-2 px-4 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" ><%= link_to "Sign up now!", new_user_path%></button>
+<div class="container  max-mx-auto bg-white rounded-xl shadow-lg flex items-center">
+    <%= image_tag("logo.gif", alt: "Home", class: 'block mx-auto h-48 sm:mx-0 sm:shrink-0')%>
+    <div class="text-center space-y-2 sm:text-left">
+        <div class="content space-y-0.5">
+            <p class= "text-lg text-black font-semibold">Welcome to Gaddit</p>
+            <p class="text-slate-500 font-medium">Join us today!</p>
+        </div>
+        <button lass = "py-1 px-4 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" ><%= link_to "Sign up now!", new_user_path%></button>
     </div>
 </div>

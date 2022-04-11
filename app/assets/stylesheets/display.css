@@ -17,6 +17,22 @@ h1 {
     display: flex;
     justify-content: space-between;
     position: relative;
+    background-color: white;
+}
+.fix-header {
+    padding: 10px auto;
+    position:fixed;
+    top:0;
+    width: 100%;
+    z-index: 2;
+}
+
+
+.page-content {
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 5%;
+    padding: 16px;
 }
 
 .header nav{
@@ -28,6 +44,7 @@ h1 {
     top:0;
     left:5%;
     position: absolute;
+    cursor:pointer;
 }
 
 nav {
@@ -103,7 +120,7 @@ label {
 .content {
     width: 200px;
     height: 200px; 
-    display: block;s
+    display: block;
     text-align: center;
     margin: -100px 0 0 -100px;
     position:absolute;
@@ -111,11 +128,6 @@ label {
     left: 50%;
 }
 
-.page-content {
-    position: absolute;
-    margin-top: 5%;
-    margin-left: 5%;
-}
 
 .notice {
     color: red;

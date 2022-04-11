@@ -12,20 +12,32 @@
   </head>
 
   <body>
-    <div class="header">
-      <h1 class ="logo">gaddit</h1>
-      <nav>
-        <%= link_to "Home", root_path %>
+  <div class="fix-header">
+    <div class="header p-4  shadow-lg space-between">
+      <div class  ="shrink-0">
+        <h1 class ="h-12 w-12"><%= link_to image_tag("logo.gif", width: "50", alt: "Home"), root_path %></h1>
+      </div>
+      <div class="nav shrink-0"></div>
+      <nav class="font-medium">
         <% unless @current_user.present? %>
           <%= link_to "Log In ", login_path %>
           <%= link_to "Sign Up ",new_user_path %>
         <% else %>
+          <%= link_to "Profile", edit_user_path(@current_user.id) %>
           <%= link_to "Log out", login_path, :method => "delete" %>
         <% end %>
       </nav>
+      </div>
     </div>
+  </div>
     <div class="page-content">
     <%= yield  %>
     </div>
+  
+
+    <button class = "py-2 px-4 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" type="button" id="back-to-top" href="#">
+    Back to Top
+    </button>
+
   </body>
 </html>
