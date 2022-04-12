@@ -19,9 +19,9 @@ $(document).ready(function () {
     });
 
     function readURL() {
-        let preview = $("#avatar-img");
-        let file = $('input[type=file]').files[0];
-        let reader = new FileReader();
+        var preview = $("#avatar-img");
+        var file = $('input[type=file]').files[0];
+        var reader = new FileReader();
 
         reader.onloadend = function() {
             preview.src = reader.result;
