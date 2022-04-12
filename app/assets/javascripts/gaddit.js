@@ -18,7 +18,7 @@ $(document).ready(function () {
         return false;
     });
 
-    let readURL = function() {
+    function readURL() {
         let preview = $("#avatar-img");
         let file = $('input[type=file]').files[0];
         let reader = new FileReader();
