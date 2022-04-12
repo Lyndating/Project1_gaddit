@@ -6,7 +6,13 @@
         <h3> <%= @current_user.name %></h3>
         <input type="file" id="avatar" onchange ="readURL()"/>
         <%= image_tag image_path("avatars/1.png"), :id=> "avatar-img"%>
+        <div class="stats">
+            <%= link_to "#{@current_user.following.count} following",following_user_path(@current_user)%>
+            <%= link_to "#{@current_user.followers.count} followers", followers_user_path(@current_user)%>
+        </div>
     </div>
+
+    
 
     <div class="user-channels">
         <h2>Channel List</h2>
@@ -24,6 +30,7 @@
                     <div class="ml-3 overflow-hidden">
                         <p class="text-sm font-medium text-slate-900"><%= channel.name %></p>
                         <div class="user-follow-btn">
+                        <% if @current_user.channels%>
                         <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Unfollow</button>
                     </div>
                 </li>

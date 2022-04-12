@@ -8,5 +8,12 @@ Rails.application.routes.draw do
   post "/login" => "session#create"
   delete "/login" => "session#destroy"
   get "/user-homepage" => "users#show"
-
+  resources :users do
+    member do
+      get :following, :followers
+  
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+  
 end

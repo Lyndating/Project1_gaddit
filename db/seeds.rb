@@ -71,3 +71,9 @@ User.all.each do |user|
     user.channels << Channel.all.shuffle.take(5)
 end
 
+users = User.all
+user = users.first
+following = users[1..8]
+followers = users[2..10]
+following.each {|followed| user.follow(followed)}
+followers.each {|follower| follower.follow(user)}
