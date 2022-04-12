@@ -1,7 +1,11 @@
 <h1><%= @post.title%></h1>
+<h3><%= link_to @current_user.name, user_homepage_path%></h3>
 
-<h3>Posted created at <%= time_ago_in_words(@post.created_at) %> ago</h3>
 <div class="post-content">
     <p><%= @post.content %>
+</div>
+
+<div class="timestamp">
+    <h3>Posted <%= time_ago_in_words(@post.created_at) %> ago.</h3>
 </div>
     

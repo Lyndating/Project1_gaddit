@@ -13,7 +13,7 @@
 
     <ul>
         <% @current_user.channels.each do |channel| %>
-            <li class="flex py-4 first:pt-0 last:pb-0"># <%= link_to channel.name, channel_path(channel.id) %></li>
+            <li class="flex py-4 first:pt-0 last:pb-0"> # <%= link_to channel.name, channel_path(channel.id) %></li>
         <% end %>
     </ul>   
 

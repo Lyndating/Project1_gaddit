@@ -1,5 +1,6 @@
 <h1>All Channels</h1>
 
+<%= will_paginate %>
 <% @channels.each do |channel|%>
     <div class="all-channel-list p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
     <div class="shrink-0">
@@ -13,3 +14,4 @@
   </div>
 </div>
 <% end %>
+<%= will_paginate %>

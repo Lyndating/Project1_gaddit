@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_for_login
   def new
     @user = User.new
   end
@@ -13,7 +14,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(@current_user.id)
     render :show
+  end
+
+  def index
+    @users = User.paginate(page: params[:page])
   end
 
   private

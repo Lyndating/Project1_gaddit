@@ -6,9 +6,11 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
   </head>
 
   <body>
@@ -19,7 +21,7 @@
         <% unless @current_user.present? %>
           <%= link_to image_tag("logo.gif", width: "50", alt: "Home"), root_path %>
         <% else %>
-          <%= link_to image_tag("logo.gif", width: "50", alt: "Home"), user_path(@current_user.id) %>
+          <%= link_to image_tag("logo.gif", width: "50", alt: "Home"), user_homepage_path   %>
         <% end %>
         </h1>
       </div>

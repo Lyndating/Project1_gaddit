@@ -17,5 +17,21 @@ $(document).ready(function () {
         $('html, body').animate({scrollTop : 0},600);
         return false;
     });
+
+    let readURL = function() {
+        let preview = $("#avatar-img");
+        let file = $('input[type=file]').files[0];
+        let reader = new FileReader();
+
+        reader.onloadend = function() {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }else {
+            preview.src = "avatars/G-1.png";
+        }
+    };
     
 });
