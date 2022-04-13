@@ -13,8 +13,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    if !params[:files].nil?
+      params[:files].each do |file|
+        @image = file
+      end
+    end
+  end
+
+
   def show
     @user = User.find(@current_user.id)
+    @posts = @user.posts.all.paginate(page: params[:page], per_page: 10)
   end
 
   def index

@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def create
     post = Post.create post_params
     @current_user.posts << post
+    
   end
 
   def show

@@ -7,17 +7,17 @@
     <% end -%>
     
     <%= form_tag login_path do %>
-        <%= label_tag :email %>
-        <%= email_field_tag :email, "",class: "form-control px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1"%>
-        <%= label_tag :password %>
-        <%= password_field_tag :password, "", class: "form-control px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1" %>
-        <%= label_tag :remember_me, class: "checkbox inline" do %>
-        <%= check_box_tag :remember_me %>
+        <%= label_tag :email, nil, :class => "form-label"  %>
+        <%= email_field_tag :email, nil, :class => "form-control"%>
+        <%= label_tag :password, nil, :class => "form-label"  %>
+        <%= password_field_tag :password, nil, :class => "form-control" %>
+        <%= label_tag :remember_me,as: :boolean, , nil, :class => "form-label" do %>
+        <%= check_box_tag :remember_me, nil, :class => "form-control" %>
         <span>Remember me on this computer</span>
         <% end %>
 
 
-        <%= submit_tag "Log in", :class => "form-btn py-1 px-2 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"%>
+        <%= submit_tag "Log in", :class => "btn btn-success"%>
 
     <% end %>
 

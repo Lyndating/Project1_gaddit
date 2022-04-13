@@ -6,6 +6,11 @@ class SessionController < ApplicationController
     @user = User.find_by :email => params[:email]
     puts "here in session controller"
     if @user && @user.authenticate(params[:password])
+      if params[:remember_me]
+        cookies.signed[:user_id] = {value: @user.id, expires: 2.weeks.from_now}
+      else
+        cookies.signed[:user_id] = @user.id
+      end
       log_in @user
       puts @user
       redirect_to user_homepage_path
@@ -18,6 +23,7 @@ class SessionController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    cookies.delete :user_id
     redirect_to login_path
   end
 

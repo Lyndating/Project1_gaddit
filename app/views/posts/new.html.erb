@@ -1,29 +1,26 @@
 
-<div class="post-container">
+<div class="container-sm $theme-colors:($blue-100)">
     <div class="wrapper">
-        <section class="new-post bg-sky-100 rounded-lg shadow-lg">
+        <section class="new-post ">
             <header>Create Post</header>
-            <%=form_for @post do |f|%>
-                <div class="new-post-content ">
-                        <%= f.label :channel_id %>
-                        <%= f.select :channel_id, Channel.pluck(:name, :id), :include_blank => true %>
-                        <%= f.label :title%>
-                        <%= f.text_field :title%>
+            <%=form_for @post, :html =>{:multipart => true} do |f|%>
+                <div class="new-post-content  form-floacting mb-3">
+                    <%= f.label :channel_id, class: "form-label" %>
+                    <%= f.select(:channel_id, Channel.pluck(:name, :id), :include_blank => true, class:"form-select")%>
+                    <%= f.label :title, class:"floatingInput" %>
+                    <%= f.text_field :title, class:"form-control"%>
 
-                        <%=f.label :content%>
-                        <%=f.text_area(:content)%>
                 </div>
-                
-                <div class ="new-post-options">
+                    <%=f.label :content, class:"floatingInput" %>
+                    <%=f.text_area :content, class:"form-control"%>
+
+
+                <div class ="new-post-options mb-3">
                     <p>Add to Your Post</p>
-                    <ul class = "new-post-list"></ul>
-                        <li><%= image_tag "G-1.png"%></li>
-                        <li><%= image_tag "G-2.png"%></li>
-                        <li><%= image_tag "G-3.png"%></li>
-                    </ul>
+                    <%= f.label "Add Image:", :class => "form-label"%> 
+                    <%= f.cl_image_upload :link, :class => "form-control"%>
                 </div>
-                <%= f.submit %>
-
+                <%= f.submit class:"btn btn-primary"%>
             <% end %>
             </form>
             

@@ -9,41 +9,54 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <%= cloudinary_js_config %>
+
     
   </head>
 
   <body>
-  <div class="fix-header">
-    <div class="header p-4  shadow-lg space-between">
-      <div class  ="shrink-0">
-        <h1 class ="h-12 w-12">
-        <% unless @current_user.present? %>
-          <%= link_to image_tag("logo.gif", width: "50", alt: "Home"), root_path %>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+          <% unless @current_user.present? %>
+          <%= link_to image_tag("logo.gif", width: "50", alt: "Home",class: "navbar-brand"), root_path %>
         <% else %>
-          <%= link_to image_tag("logo.gif", width: "50", alt: "Home"), user_homepage_path   %>
+          <%= link_to image_tag("logo.gif", width: "50", alt: "Home",class: "navbar-brand"), user_homepage_path   %>
         <% end %>
-        </h1>
-      </div>
-      <div class="nav">
-      <nav class="font-medium flex justify-center space-x-4">
-        <% unless @current_user.present? %>
-          <%= link_to "Log In ", login_path, :class=> "font-medium text-white-700 rounded-lg hover:bg-sky-100 hover:text-white-900" %>
-          <%= link_to "Sign Up ",new_user_path,:class=> "font-medium text-white-700 rounded-lg hover:bg-sky-100 hover:text-white-900" %>
-        <% else %>
-          <%= link_to "Profile", edit_user_path(@current_user.id), :class=> "font-medium text-white-700 rounded-lg hover:bg-sky-100 hover:text-white-900" %>
-          <%= link_to "Log out", login_path, :method => "delete" ,:class=> "font-medium text-white-700 rounded-lg hover:bg-sky-100 hover:text-white-900"%>
-        <% end %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <% unless @current_user.present? %>
+              <li class="nav-item">
+                <%= link_to "Log In ", login_path, :class=> "navbar-item active" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign Up ",new_user_path,:class=> "navbar-item active" %>
+              </li>
+                <% else %>
+                  <%= link_to "Profile", edit_user_path(@current_user.id), :class=> "navbar-item active" %>
+                  <%= link_to "Log out", login_path, :method => "delete" ,:class=> "navbar-item active"%>
+                  <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdown04">
+                      <li><%= link_to "Your Channels", channels_path, class:"dropdown-item" %></li>
+                      <li><%= link_to "New Post", new_post_path, class:"dropdown-item" %></li>
+                      <li><%= link_to "#{@current_user.following.count} following",following_user_path(@current_user), class:"dropdown-item" %></li>
+                      <li><%= link_to "#{@current_user.followers.count}follower", following_user_path(@current_user), class:"dropdown-item" %></li>
+                <% end %>
+                 
       </nav>
       </div>
     </div>
   </div>
-    <div class="page-content">
+    <div class="container">
     <%= yield  %>
     </div>
   
 
-    <button class = "py-2 px-4 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" type="button" id="back-to-top" href="#">
+    <button class = "" type="button" id="back-to-top" href="#">
     Back to Top
     </button>
 
