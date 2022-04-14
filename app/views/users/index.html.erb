@@ -6,7 +6,7 @@
 <ul class= "users">
     <% @users.each do |user|%>
     <li>
-        <%= image_tag image_path("avatars/1.png"), :id=> "avatar-img"%>
+        <%= image_tag user.avatar, :id=> "avatar-img"%>
         <%= link_to user.name, user_homepage_path %>
     </li>
     <% end %>

@@ -4,7 +4,7 @@
 <% end %>
 
 <div class="create-post">
-    <button class="btn btn-primary btn-lg shadow-sm text-light"><%= link_to "Create Post", new_post_path %> </button>
+    <button class="btn btn-primary btn-lg shadow-sm text-white"><%= link_to "Create Post", new_post_path %> </button>
 </div>
 
 </div>
@@ -24,14 +24,20 @@
 
 </div>
 
-<div class=" post-list col-md-7 col-lg-8">
-<%= will_paginate @posts%>
+<div class=" post-list card mb-3" style = "max-width: 60vw">
+
     <ul role="list" class="user-posts">
     <% @posts.each do |post|%>
         <div class= "post-list">
-        <li id="post-<%post.id%>">
-            <%= image_tag "https://avatars.githubusercontent.com/u/36207117?v=4",:class => ""%>
-            <div class="ml-3 overflow-hidden">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <%= image_tag "https://avatars.githubusercontent.com/u/36207117?v=4",:class => "img-fluid rounded-start"%>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <p class="post-channel">
+                    Channel: <%= link_to post.channel.name, channel_path(post.channel.id)%>
+                </p>
                 <p class="post-title">
                     Title: <%= link_to post.title, post_path(post.id)%>
                 </p>
@@ -39,18 +45,20 @@
                     Posted created at <%= time_ago_in_words(post.created_at) %> ago
                 </p>
                 <p class="post-content">
-                    <%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %>
-                <% if post.image.present? %>
+     s               <%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %>
+                </p>
+                <% if post.links.present? %>
                 <p class="post-link">
-                    <% cl_image_tag(post.image, %>
+                    <% cl_image_tag(post.links) %>
                 </p>
-                </p>
+                <%end %>
+                </div>
             </div>
-        </li>
+        </div>
         </div>
     <% end %>
     </ul>
-<%= will_paginate @posts%>
+
 </div>
 
 

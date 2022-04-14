@@ -14,17 +14,31 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if !params[:files].nil?
-      params[:files].each do |file|
-        @image = file
-      end
+    @user = User.find(params[:id])
+  end
+
+  def update
+    user = User.find(params[:id])
+    if !params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      puts params[:file]
+      user.avatar = req["public_id"]
     end
+      user.update_attributes(user_params)
+      user.save
+      redirect_to edit_user_path
   end
 
 
   def show
     @user = User.find(@current_user.id)
-    @posts = @user.posts.all.paginate(page: params[:page], per_page: 10)
+    @user_posts = []
+    @current_user.channels.each do |channel|
+      channel.posts.each do |post|
+        @user_posts.push(post)
+      end
+    end
+    @posts = @user_posts
   end
 
   def index
@@ -35,4 +49,13 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name,:email,:password,:password_confirmation)
   end
+
+  def remove_channel_from_user
+    channel = Channel.find(params[:channel][:id])
+    user = channel.users.find(params[:user][:id])
+    if user
+      channel.users.delete(user)
+    end
+  end 
+
 end

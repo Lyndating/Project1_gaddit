@@ -8,4 +8,3 @@ class ChannelsController < ApplicationController
     @channel = Channel.find params[:id]
   end
 end
- 

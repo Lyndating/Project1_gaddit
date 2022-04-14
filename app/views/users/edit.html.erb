@@ -4,8 +4,13 @@
 
     <div class="user-info">
         <h3> <%= @current_user.name %></h3>
-        <%= file_field_tag "avatar", :accept => "image/png", :value => @current_user[:avatar]%>
-        <%= cl_image_tag(@image)%>
+        <%= form_for(@user, :html => {:multipart => true}) do |f|%>
+            <%= hidden_field :user_id, :value => @current_user.id%>
+            <%= f.label "Profile Image: "%>
+            <%= f.cl_image_upload :image %>
+            <%= f.submit "Update image"%>
+        <% end %>
+        <%= cl_image_tag(@current_user.avatar)%>
         <div class="stats">
             <%= link_to "#{@current_user.following.count} following",following_user_path(@current_user)%>
             <%= link_to "#{@current_user.followers.count} followers", followers_user_path(@current_user)%>

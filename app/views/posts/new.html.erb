@@ -1,30 +1,30 @@
 
-<div class="container-sm $theme-colors:($blue-100)">
+<div class="container-sm bg-light">
     <div class="wrapper">
         <section class="new-post ">
-            <header>Create Post</header>
+            <header class = "form-signin-heading text-center">Create Post</header>
             <%=form_for @post, :html =>{:multipart => true} do |f|%>
                 <div class="new-post-content  form-floacting mb-3">
                     <%= f.label :channel_id, class: "form-label" %>
-                    <%= f.select(:channel_id, Channel.pluck(:name, :id), :include_blank => true, class:"form-select")%>
+                    <%= f.select(:channel_id, @current_user.channels.pluck(:name, :id), :include_blank => true, class:"form-select")%>
                     <%= f.label :title, class:"floatingInput" %>
                     <%= f.text_field :title, class:"form-control"%>
 
                 </div>
                     <%=f.label :content, class:"floatingInput" %>
-                    <%=f.text_area :content, class:"form-control"%>
+                    <%=f.text_area :content, class:"form-control",:row => 10 %>
 
 
                 <div class ="new-post-options mb-3">
-                    <p>Add to Your Post</p>
-                    <%= f.label "Add Image:", :class => "form-label"%> 
-                    <%= f.cl_image_upload :link, :class => "form-control"%>
+                    <p></p>
+                        <%= f.label "Add Image or Video:", :class => "form-label"%> 
+                        <%= f.cl_image_upload :links, :class => "form-control"%>
+                    </p>
                 </div>
-                <%= f.submit class:"btn btn-primary"%>
+                <%= f.submit "Post",class:"btn btn-primary"%>
             <% end %>
             </form>
             
-
         </section>
     
     </div>
