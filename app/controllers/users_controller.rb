@@ -19,14 +19,16 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if !params[:file].present?
+
+    if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
       puts params[:file]
       user.avatar = req["public_id"]
     end
-      user.update_attributes(user_params)
-      user.save
-      redirect_to edit_user_path
+    # raise user.avatar
+    user.update_attributes(:avatar => user.avatar)
+    # user.save
+    redirect_to edit_user_path
   end
 
 
@@ -47,15 +49,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name,:email,:password,:password_confirmation)
+    params.require(:user).permit(:name,:email,:password,:password_confirmation, :avatar)
   end
-
-  def remove_channel_from_user
-    channel = Channel.find(params[:channel][:id])
-    user = channel.users.find(params[:user][:id])
-    if user
-      channel.users.delete(user)
-    end
-  end 
 
 end

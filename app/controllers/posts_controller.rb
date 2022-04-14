@@ -2,14 +2,20 @@ class PostsController < ApplicationController
   before_action :check_for_login, only:[:create,:destroy]
   def new
     @post = Post.new
-    @channels = Channel.all.name 
   end
 
   def create
-    @post = @current_user.posts.build(post_params)
-    if @post.save
+    post = Post.create post_params
+    puts post_params
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      post.links = req["public_id"]
+    end
+    post.update_attributes(post_params)
+    post.save
+    if post.save
       flash[:success] = "Post created!"
-      redirect_to post_path(@post)
+      redirect_to post_path(post)
     else
       render :new
     end
@@ -23,6 +29,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title,:content,:links)
+    puts params
+    params.require(:post).permit(:title,:content,:channel_id,:links)
   end
 end

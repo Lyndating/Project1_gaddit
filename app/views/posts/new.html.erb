@@ -6,7 +6,8 @@
             <%=form_for @post, :html =>{:multipart => true} do |f|%>
                 <div class="new-post-content  form-floacting mb-3">
                     <%= f.label :channel_id, class: "form-label" %>
-                    <%= f.select(:channel_id, @current_user.channels.pluck(:name, :id), :include_blank => true, class:"form-select")%>
+                    <%= f.select :channel_id, 
+                    options_for_select(@current_user.channels.pluck(:name, :id), params[:channel_id]),{class:"form-select"}%>
                     <%= f.label :title, class:"floatingInput" %>
                     <%= f.text_field :title, class:"form-control"%>
 
@@ -16,7 +17,6 @@
 
 
                 <div class ="new-post-options mb-3">
-                    <p></p>
                         <%= f.label "Add Image or Video:", :class => "form-label"%> 
                         <%= f.cl_image_upload :links, :class => "form-control"%>
                     </p>
@@ -29,5 +29,3 @@
     
     </div>
 </div>
-
-

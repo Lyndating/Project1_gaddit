@@ -5,12 +5,11 @@
     <div class="user-info">
         <h3> <%= @current_user.name %></h3>
         <%= form_for(@user, :html => {:multipart => true}) do |f|%>
-            <%= hidden_field :user_id, :value => @current_user.id%>
             <%= f.label "Profile Image: "%>
-            <%= f.cl_image_upload :image %>
+            <%= f.cl_image_upload :avatar %>
             <%= f.submit "Update image"%>
         <% end %>
-        <%= cl_image_tag(@current_user.avatar)%>
+        <%= cl_image_tag  @current_user.avatar, style: "width: 100px"%>
         <div class="stats">
             <%= link_to "#{@current_user.following.count} following",following_user_path(@current_user)%>
             <%= link_to "#{@current_user.followers.count} followers", followers_user_path(@current_user)%>
@@ -21,9 +20,9 @@
 
     <div class="user-channels">
         <h2>Channel List</h2>
-        <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"><%= link_to "Add More", channels_path %></button>
-        <div class="all-channel-list p-6 max-w-sm bg-white rounded-xl shadow-lg flex items-center space-x-4">
-        <div class="shrink-0">
+        <button class=""><%= link_to "Add More", channels_path %></button>
+        <div class="">
+        <div class="">
             
         </div>
     
@@ -31,13 +30,8 @@
             <ul class="p-6 divide-y divide-slate-200">
                 <% @current_user.channels.each do |channel|%>
                 <li class="flex py-4 first:pt-0 last:pb-0">
-                    <img class="h-10 w-10 rounded-full" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo">
-                    <div class="ml-3 overflow-hidden">
-                        <p class="text-sm font-medium text-slate-900"><%= channel.name %></p>
-                        <div class="user-follow-btn">
-                       
-                        <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Unfollow</button>
-                    </div>
+                    <img class="h-10 w-10 rounded-full" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", style= "width:40px">
+                    <p class="text-sm font-medium text-slate-900"><%= channel.name %></p>
                 </li>
                 <% end %>
             </ul>
