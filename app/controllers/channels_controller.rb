@@ -6,14 +6,20 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find params[:id]
+    @channel_id = @channel.id
   end
 
-  private
-  def remove_channel_from_user
-    channel = Channel.find(params[:channel][:id])
-    user = channel.users.find(params[:user][:id])
-    if user
-      channel.users.delete(user)
-    end
-  end 
+  def leave
+    channel = Channel.find params[:id]
+    @current_user.channels.delete(channel)
+    redirect_to channels_path
+  end
+
+  def join
+    channel = Channel.find params[:id]
+    @current_user.channels.append(channel)
+    redirect_to channels_path
+  end
+
+
 end

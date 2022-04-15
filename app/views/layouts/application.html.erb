@@ -6,57 +6,32 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <%= cloudinary_js_config %>
 
     
   </head>
-
-  <body>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid">
-          <% unless @current_user.present? %>
-          <%= link_to image_tag("G-4.png", width: "50", alt: "Home",class: "navbar-brand"), root_path %>
+<body>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <% if @current_user.present? %>
+        <li><%= link_to "New post", new_post_path %></li>
+        <li><%= link_to "All channels", channels_path %></li>
+        <li><%= link_to "Edit profile", edit_user_path(@current_user.id) %></li>
+        <li><%= link_to "Log out", login_path, :method => "delete" %></li>
         <% else %>
-          <%= link_to image_tag("G-4.png", width: "50", alt: "Home",class: "navbar-brand"), user_path(@current_user)   %>
+        <li><%= link_to "Log in", login_path %></li>
+        <li><%= link_to "Sign up", new_user_path %></li>
         <% end %>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarsExample04">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <% unless @current_user.present? %>
-              <li class="nav-item">
-                <%= link_to "Log In ", login_path, :class=> "navbar-item active" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Sign Up ",new_user_path,:class=> "navbar-item active" %>
-              </li>
-                <% else %>
-                  <%= link_to "Profile", edit_user_path(@current_user.id), :class=> "navbar-item active" %>
-                  <%= link_to "Log out", login_path, :method => "delete" ,:class=> "navbar-item active"%>
-                  <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                  <ul class="dropdown-menu" aria-labelledby="dropdown04">
-                      <li><%= link_to "Your Channels", channels_path, class:"dropdown-item" %></li>
-                      <li><%= link_to "New Post", new_post_path, class:"dropdown-item" %></li>
-                <% end %>
-                 
-      </nav>
-      </div>
+      </ul>
+    </nav>
+    <div>
+      <%= yield  %>
     </div>
-  </div>
-    <div class="container">
-    <%= yield  %>
-    </div>
-  
-
     <button class = "" type="button" id="back-to-top" href="#">
     Back to Top
     </button>
-
   </body>
 </html>

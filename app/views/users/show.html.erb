@@ -46,7 +46,7 @@
                     Posted created at <%= time_ago_in_words(post.created_at) %> ago
                 </p>
                 <p class="post-content">
-     s               <%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %>
+                  <%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %>
                 </p>
                 <% if post.links.present? %>
                 <p class="post-link">

@@ -6,13 +6,19 @@
             <%=form_for @post, :html =>{:multipart => true} do |f|%>
                 <div class="new-post-content  form-floacting mb-3">
                     <%= f.label :channel_id, class: "form-label" %>
+                    <% if @channel_id %>
+                    <%= f.text_field :channel_name, value: @channel.name, class: "form-control", disabled: true%>
+                    <%=f.hidden_field :channel_id, value: @channel.id%>
+                    <% else %>
                     <%= f.select :channel_id, 
                     options_for_select(@current_user.channels.pluck(:name, :id), params[:channel_id]),{class:"form-select"}%>
-                    <%= f.label :title, class:"floatingInput" %>
+                    <% end %>
+
+                    <%= f.label :title, class:"form-label" %>
                     <%= f.text_field :title, class:"form-control"%>
 
                 </div>
-                    <%=f.label :content, class:"floatingInput" %>
+                    <%=f.label :content, class:"form-label" %>
                     <%=f.text_area :content, class:"form-control",:row => 10 %>
 
 

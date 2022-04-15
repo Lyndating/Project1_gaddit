@@ -1,5 +1,10 @@
 <h1 class ="uppercase tracking-wide  text-sky-600 font-bold">Channel: <%= @channel.name%></h1>
 
+<div>
+    <h4><%= @channel.users.count%>Members</h4>
+    <button class="btn btn-primary btn-lg shadow-sm text-white"><%= link_to "Create Post", new_post_path(@channel_id) %> </button>
+</div>
+
 <div class=" post-list space-y-5 bg-sky-200 rounded-xl">
     <ul role="list" class="p-6 divide-y divide-slate-200 space-y-5">
     <% @channel.posts.order(created_at: :desc).each do |post|%>

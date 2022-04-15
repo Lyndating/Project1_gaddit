@@ -2,11 +2,13 @@ class PostsController < ApplicationController
   before_action :check_for_login, only:[:create,:destroy]
   def new
     @post = Post.new
+    puts params[:id]
+    @channel_id = params[:format]
+    @channel = Channel.find params[:format]
   end
 
   def create
     post = Post.create post_params
-    puts post_params
     if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
       post.links = req["public_id"]

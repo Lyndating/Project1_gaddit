@@ -1,14 +1,24 @@
-
-
-<div class="home-container max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-    <div class="home-content md:flex">
-        <div class="md:shrink-0">
-            <%= image_tag("G-4.png", alt: "Home", class: 'h-48 w-full object-cover md:h-full md:w-48')%>
-        </div>
-        <div class="text-center p-8">
-            <p class= "home-title uppercase tracking-wide  text-sky-600 font-bold">Welcome to Gaddit</p>
-            <p class="mt-2 text-slate-500">Join us today!</p>
-            <button class = "w-100 btn btn-primary btn-lg" ><%= link_to "Sign up now!", new_user_path%></button>
-        </div>
+<div>
+  <% if ! @current_user.present? %>
+    <h1>Welcome to Gaddit!</h1>
+    <p>Please <%= link_to "Log in", login_path %> or <%= link_to "Sign up", new_user_path %></p>
+  <% else %>
+    <h1 id = "user-header">Welcome <%= @current_user.name %>!</h1>
+    <div class="create-post">
+        <button class="btn btn-primary btn-lg shadow-sm text-white"><%= link_to "Create Post", new_post_path %> </button>
     </div>
+    <div>
+    <% Post.where(channel_id: @current_user.channels).limit(20).each do | post | %>
+      <div>
+        <p><%= link_to "#" + post.channel.name, channel_path(post.channel) %> @<%= time_ago_in_words(post.created_at) %>></p>
+        <h4 class="post-title">
+            Title: <%= link_to post.title, post_path(post.id)%>
+        </h4>
+        <p>
+            <%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %>
+        </p>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
 </div>
