@@ -2,9 +2,10 @@ class PostsController < ApplicationController
   before_action :check_for_login, except: [:show]
   def new
     @post = Post.new
-    puts params[:id]
-    @channel_id = params[:format]
-    @channel = Channel.find params[:format]
+    if params[:format]
+      @channel_id = params[:format]
+      @channel = Channel.find params[:format]
+    end
   end
 
   def create
@@ -44,6 +45,10 @@ class PostsController < ApplicationController
       @post.destroy
       redirect_to root_path
     
+  end
+
+  def contact
+    @comment = Comment.new
   end
 
   private

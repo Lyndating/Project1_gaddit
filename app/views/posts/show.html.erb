@@ -2,7 +2,7 @@
     <aside class="col-md-4">
         <section class="user_info">
             <h1><%= @post.title%></h1>
-            <h3><%= link_to @current_user.name, user_path(@current_user)%></h3>
+            <h3><%= link_to @post.user.name, user_path(@post.user)%></h3>
         </section>
     </aside>
 
@@ -21,8 +21,9 @@
 </div>
 <div>
     <div>
-        <h4>Comments: </h4>
-        <%= link_to "Add Comment", new_comment_path(post_id: @post.id) %>
+        <h4>Comment as <%= link_to @current_user.name, root_path(@current_user)%></h4>
+        <%= render partial: "comments/form", :comment => @comment %>
+        <%= render partial: "posts/comment", collection: @post.comments.reverse%>
     </div>
 
 </div>

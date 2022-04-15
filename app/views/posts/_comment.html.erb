@@ -1,0 +1,8 @@
+<div>
+    <h4>Comment by <%= (comment.user.name)%></h4>
+    <p>posted by <%= time_ago_in_words(comment.created_at)%>ago</p>
+    <p><%= comment.content %></p>
+    <% if comment.user_id == @current_user.id %>
+    <%=link_to "Delete", remove_comment_path(comment.id), :method => "post",class:"btn btn-outline-secondary", role: "button",:data => {:confirm => "Are you sure?"} %>
+    <% end %>
+</div>

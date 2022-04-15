@@ -6,7 +6,7 @@
   <tr>
     <td>
     <img class="h-12 w-12" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", style="width: 40px">
-    <%= channel.name %>
+    <%= link_to channel.name, channel_path(channel) %>
     </td>
     <td>
     <% if @current_user.channel_ids.include? channel.id %>
