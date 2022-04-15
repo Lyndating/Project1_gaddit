@@ -1,20 +1,19 @@
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
-<div class="form">
 <div class="log-in-form">
+<div>
     <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
-    <% end -%>
+    <% end %>
     
     <%= form_tag login_path do %>
         <%= label_tag :email, nil, :class => "form-label"  %>
         <%= email_field_tag :email, nil, :class => "form-control"%>
         <%= label_tag :password, nil, :class => "form-label"  %>
         <%= password_field_tag :password, nil, :class => "form-control" %>
-        <%= label_tag :remember_me, nil, :class => "form-label" do %>
+        <%#= label_tag :remember_me, as: :boolean, nil, :class => "form-label" do %>
         <%= check_box_tag :remember_me, nil, :class => "form-control" %>
         <span>Remember me on this computer</span>
-        <% end %>
 
 
         <%= submit_tag "Log in", :class => "btn btn-success"%>
@@ -22,6 +21,5 @@
     <% end %>
 
     <p>New to Gaddit? <%= link_to "SIGN UP!", new_user_path, :class => "signup-link" %></p>
-
 </div>
 </div>

@@ -9,7 +9,6 @@ class User < ApplicationRecord
 
     has_and_belongs_to_many :channels
     has_many :posts, dependent: :destroy 
-    
     def current_user
         return unless session[:user_id]
         @current_user ||= User.find(session[:user_id])

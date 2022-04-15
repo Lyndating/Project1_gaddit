@@ -1,24 +1,22 @@
 <h1>All Channels</h1>
 
-<%= will_paginate %>
-<%= form_for user_path(@current_user.id) do |f|%>
-    <% @channels.each do |channel|%>
-    <div class="">
-        <img class="h-12 w-12" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", style="width: 40px">
-    </div>
-    <div>
-        <%=f.label :name,  channel.name %>
-    <div class="user-follow-btn">  
-        <% if @current_user.channels.include? (channel)%>
-            <button type = "submit" class="btn-secondary", value = "unfollow">Unfollow</button>    
-        <% else %>   
-            <button type = "submit" class="btn-secondary",value = "follow" >Follow</button> 
-        <% end %>
 
-        </div>
-  </div>
-</div>
+<table>
+<% Channel.all.each do |channel|%>
+  <tr>
+    <td>
+    <img class="h-12 w-12" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", style="width: 40px">
+    <%= channel.name %>
+    </td>
+    <td>
+    <% if @current_user.channel_ids.include? channel.id %>
+        <%= link_to "Join", join_channel_path(channel.id), :method => "post",class:"btn btn-outline-secondary disabled", role: "button" %>
+        <%= link_to "Leave", leave_channel_path(channel.id), :method => "post", class:"btn btn-primary",role:"button" %></button>
+    <% else %>
+        <%= link_to "Join", join_channel_path(channel.id), :method => "post",class:"btn btn-primary",role:"button" %>
+        <%= link_to "Leave", leave_channel_path(channel.id), :method => "post" ,class:"btn btn-outline-secondary disabled", role: "button"%>
+    <% end %>
+    </td>
+  </tr>
 <% end %>
-<% end %>
-    <%= f.submit "save"%>
-<%= will_paginate %>
+</table>

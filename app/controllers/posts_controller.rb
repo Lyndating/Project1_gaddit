@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :check_for_login, only:[:create,:destroy]
+  before_action :check_for_login, except: [:show]
   def new
     @post = Post.new
     puts params[:id]
@@ -26,6 +26,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id]
+    @comment = Comment.new params[:post_id]
   end
 
   def edit

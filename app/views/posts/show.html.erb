@@ -17,3 +17,12 @@
             <button><%= link_to "Edit", edit_post_path(@post)%></button>
             <button><%= link_to "Delete", post_path(@post), :method => "delete", :data => {:confirm => "Are you sure?"} %></button>
         <% end %>
+
+</div>
+<div>
+    <div>
+        <h4>Comments: </h4>
+        <%= link_to "Add Comment", new_comment_path(post_id: @post.id) %>
+    </div>
+
+</div>
