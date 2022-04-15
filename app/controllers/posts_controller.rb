@@ -12,6 +12,7 @@ class PostsController < ApplicationController
       post.links = req["public_id"]
     end
     post.update_attributes(post_params)
+    post.user_id = @current_user.id
     post.save
     if post.save
       flash[:success] = "Post created!"
@@ -25,11 +26,26 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
   end
 
-  def destroy
+  def edit
+    @post = Post.find params[:id]
   end
 
-  def post_params
-    puts params
-    params.require(:post).permit(:title,:content,:channel_id,:links)
+  def update 
+    post = Post.find params[:id]
+    post.update post_params
+    redirect_to post
   end
+
+  def destroy
+    @post = Post.find params[:id]
+      @post.destroy
+      redirect_to root_path
+    
+  end
+
+  private
+    def post_params
+      puts params
+      params.require(:post).permit(:title,:content,:channel_id,:links)
+    end
 end

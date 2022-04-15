@@ -43,8 +43,6 @@
                   <ul class="dropdown-menu" aria-labelledby="dropdown04">
                       <li><%= link_to "Your Channels", channels_path, class:"dropdown-item" %></li>
                       <li><%= link_to "New Post", new_post_path, class:"dropdown-item" %></li>
-                      <li><%= link_to "#{@current_user.following.count} following",following_user_path(@current_user), class:"dropdown-item" %></li>
-                      <li><%= link_to "#{@current_user.followers.count}follower", following_user_path(@current_user), class:"dropdown-item" %></li>
                 <% end %>
                  
       </nav>

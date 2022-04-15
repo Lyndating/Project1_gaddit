@@ -1,2 +1,31 @@
-<h1>Post#edit</h1>
-<p>Find me in app/views/post/edit.html.erb</p>
+
+<div class="container-sm bg-light">
+    <div class="wrapper">
+        <section class="new-post ">
+            <header class = "form-signin-heading text-center">Edit Post</header>
+            <%=form_for @post, :html =>{:multipart => true} do |f|%>
+                <div class="new-post-content  form-floacting mb-3">
+                    <%= f.label :channel_id, class: "form-label" %>
+                    <%= f.select :channel_id, 
+                    options_for_select(@current_user.channels.pluck(:name, :id), params[:channel_id]),{class:"form-select"}%>
+                    <%= f.label :title, class:"floatingInput" %>
+                    <%= f.text_field :title, class:"form-control"%>
+
+                </div>
+                    <%=f.label :content, class:"floatingInput" %>
+                    <%=f.text_area :content, class:"form-control",:row => 10 %>
+
+
+                <div class ="new-post-options mb-3">
+                        <%= f.label "Image or Video:", :class => "form-label"%>                 
+                        <%= f.cl_image_upload :links, :class => "form-control"%>
+                    </p>
+                </div>
+                <%= f.submit "Update",class:"btn btn-primary"%>
+            <% end %>
+            </form>
+            
+        </section>
+    
+    </div>
+</div>

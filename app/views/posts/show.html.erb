@@ -5,13 +5,15 @@
             <h3><%= link_to @current_user.name, user_path(@current_user)%></h3>
         </section>
     </aside>
+
     <div class="col-md-8">
         <h3>Posted <%= time_ago_in_words(@post.created_at) %> ago.</h3>
         <h3>Channel: <%=link_to @post.channel.name, channel_path(@post.channel)%></h3>
         <p><%= @post.content %>
-        <%if @post.links.present?%>
-            <p><%= cl_image_tag @post.links, :style => "width: 50px"%></p>
-        <% end %>
+        <p><%= cl_image_tag @post.links, :style => "width: 50px"%></p>
+
     </div>
-</div>
-    
+        <%if @post.user_id == @current_user.id%>
+            <button><%= link_to "Edit", edit_post_path(@post)%></button>
+            <button><%= link_to "Delete", post_path(@post), :method => "delete", :data => {:confirm => "Are you sure?"} %></button>
+        <% end %>

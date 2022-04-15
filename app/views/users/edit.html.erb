@@ -10,10 +10,6 @@
             <%= f.submit "Update image"%>
         <% end %>
         <%= cl_image_tag  @current_user.avatar, style: "width: 100px"%>
-        <div class="stats">
-            <%= link_to "#{@current_user.following.count} following",following_user_path(@current_user)%>
-            <%= link_to "#{@current_user.followers.count} followers", followers_user_path(@current_user)%>
-        </div>
     </div>
 
     

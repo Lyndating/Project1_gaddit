@@ -13,6 +13,7 @@ User.destroy_all
         name: Faker::Name.name,
         email: Faker::Internet.email,
         password: "chicken"
+        avatar: "https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png"
     )
 end
 puts "#{User.count}users created"
@@ -70,10 +71,3 @@ puts "#{Post.count}posts created"
 User.all.each do |user|
     user.channels << Channel.all.shuffle.take(5)
 end
-
-users = User.all
-user = users.first
-following = users[1..8]
-followers = users[2..10]
-following.each {|followed| user.follow(followed)}
-followers.each {|follower| follower.follow(user)}

@@ -12,8 +12,7 @@ class SessionController < ApplicationController
         cookies.signed[:user_id] = @user.id
       end
       log_in @user
-      puts @user
-      redirect_to user_homepage_path
+      redirect_to user_path(@user)
     else
       flash[:notice] = "Invalid email/password combination"
       render :new

@@ -15,13 +15,14 @@
 <div class="channel-list col-md-4 col-lg-4 order-md-last shadow-sm rounded-3 mb-4 card">
     <div class="card-header py-3 bg-$blue-500 ">
         <h3 class="my-0 fw-normal">Channel List</h3>
+        <button class="btn-primary">Edit</button>
     </div>
     <ul class="list-unstyled-text-small">
         <% @current_user.channels.each do |channel| %>
             <li class="mb-1"> <%= link_to channel.name, channel_path(channel.id), class: "link-secondary text-decoration-none" %></li>
         <% end %>
     </ul>   
-
+ 
 </div>
 
 <div class=" post-list card mb-3" style = "max-width: 60vw">
