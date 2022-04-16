@@ -16,7 +16,7 @@
     </div>
     <% Post.where(channel_id: @current_user.channels).each do | post | %>
       <div class="d-block p-2 bg-light mt-2 rounded ">
-        <h6><%= link_to "#" + post.channel.name, channel_path(post.channel) %> @<%= time_ago_in_words(post.created_at) %>></h6>
+        <h6><i class="bi bi-collection"></i><%= link_to  post.channel.name, channel_path(post.channel) %> @<%= time_ago_in_words(post.created_at) %>></h6>
         <h4 class="post-title ">
             Title: <%= link_to post.title, post_path(post.id), class:"text-decoration-none text-black"%>
         </h4>

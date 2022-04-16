@@ -37,3 +37,14 @@
 .space {
     margin: 50px auto;
 }
+
+/* User profile page */
+.user-channel-header button{
+    float:right;
+    display: inline;
+}
+.user-channel-header button a {
+    text-decoration: none;
+    color: white;
+    display: inline;
+}

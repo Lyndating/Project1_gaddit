@@ -14,23 +14,32 @@
 
     
 
-    <div class="user-channels">
-        <h2>Channel List</h2>
-        <button class=""><%= link_to "Add More", channels_path %></button>
-        <div class="">
-        <div class="">
-            
+    <div class="user-channels container mt-5">
+        <div class="user-channel-header row d-inline align-items-center">
+            <h2>Channel List</h2>
+            <button class="btn btn-primary btn-md shadow-sm text-white"><%= link_to "Add More", channels_path, class:"text-decoration-none" %></button>
         </div>
+
+
     
-        <div class="text-xl font-medium text-black">   
-            <ul class="p-6 divide-y divide-slate-200">
+        <div class="row">   
+            <div class="col-xl-3 col-sm-6 col-12">
                 <% @current_user.channels.each do |channel|%>
-                <li class="flex py-4 first:pt-0 last:pb-0">
-                    <img class="h-10 w-10 rounded-full" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", style= "width:40px">
-                    <p class="text-sm font-medium text-slate-900"><%= channel.name %></p>
-                </li>
-                <% end %>
-            </ul>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center ">  
+                                    <img class="channel-img rounded-start" src="https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png" alt="Channel Logo", width= "40px">
+                                </div>
+                                <div class="media-body-text-right">
+                                    <p><%= link_to channel.name, channel_path(channel), class: "text-decoration-none d-line"%></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
         </div>
     </div>
 

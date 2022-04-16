@@ -12,8 +12,8 @@ User.destroy_all
         #id: id,
         name: Faker::Name.name,
         email: Faker::Internet.email,
-        password: "chicken"
-        avatar: "https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png"
+        password: "chicken",
+        avatar: "https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png",
     )
 end
 puts "#{User.count}users created"
