@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     /*--Scroll Back to Top Button Show--*/
-    
+    $("#back-to-top").fadeOut();
     $(window).scroll(function(){
         if ($(this).scrollTop() > 110) {
             $('#back-to-top').fadeIn();
@@ -17,21 +17,6 @@ $(document).ready(function () {
         $('html, body').animate({scrollTop : 0},600);
         return false;
     });
-    
-    function readURL() {
-        var preview = $("#avatar-img");
-        var file = $('input[type=file]').files[0];
-        var reader = new FileReader();
-        console.log("it's running")
-        reader.onloadend = function() {
-            preview.src = reader.result;
-        }
 
-        if (file) {
-            reader.readAsDataURL(file);
-        }else {
-            preview.src = "avatars/G-1.png";
-        }
-    };
     
 });

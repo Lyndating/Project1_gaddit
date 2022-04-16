@@ -1,22 +1,28 @@
 <h1>All Channels</h1>
 
 
-<table>
-<% Channel.all.each do |channel|%>
-  <tr>
-    <td>
-    <img class="h-12 w-12" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", style="width: 40px">
-    <%= link_to channel.name, channel_path(channel) %>
-    </td>
-    <td>
-    <% if @current_user.channel_ids.include? channel.id %>
-        <%= link_to "Join", join_channel_path(channel.id), :method => "post",class:"btn btn-outline-secondary disabled", role: "button" %>
-        <%= link_to "Leave", leave_channel_path(channel.id), :method => "post", class:"btn btn-primary",role:"button" %></button>
-    <% else %>
-        <%= link_to "Join", join_channel_path(channel.id), :method => "post",class:"btn btn-primary",role:"button" %>
-        <%= link_to "Leave", leave_channel_path(channel.id), :method => "post" ,class:"btn btn-outline-secondary disabled", role: "button"%>
-    <% end %>
-    </td>
-  </tr>
-<% end %>
-</table>
+<div class="container">   
+  <% Channel.all.each do |channel|%>
+    <div class=" px-1 py-1 rounded ">
+      <div class="col-sm-2 d-inline p-2">
+        <div class="d-inline">
+          <img class="channel-img rounded-start" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", width= "40px">
+          <%= link_to channel.name, channel_path(channel), class: "text-decoration-none d-line"%>
+        </div>
+      </div>
+      <div class="col-sm-2 p-2">
+        <% if @current_user.channel_ids.include? channel.id %>
+          <div class="btn-group card-text">
+            <%= link_to "Join", join_channel_path(channel.id), :method => "post",class:"btn btn-outline-secondary disabled", role: "button" %>
+            <%= link_to "Leave", leave_channel_path(channel.id), :method => "post", class:"btn btn-primary",role:"button" %>
+          </div>
+        <% else %>
+          <div class="btn-group card-text">
+            <%= link_to "Join", join_channel_path(channel.id), :method => "post",class:"btn btn-primary",role:"button" %>
+            <%= link_to "Leave", leave_channel_path(channel.id), :method => "post" ,class:"btn btn-outline-secondary disabled", role: "button"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

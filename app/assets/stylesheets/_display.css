@@ -1,0 +1,39 @@
+
+/* log-in page */
+.login-title{
+    text-align: center;
+    margin-top: 2em;
+}
+/*home page*/ 
+.center {
+    text-align: center;
+    margin: 10vh auto;
+    padding: 20vh auto;
+}
+.center img {
+    margin-top: 20px;
+    width: 30vw;
+}
+.center h1{
+    font-size: 2.5em;
+    font-weight: 600;
+    margin: 10vh auto;
+}
+/* channel list */
+/* user homepage */
+.create-post{
+    margin-top: 40px;
+}
+
+.create-post button{
+    float:right;
+    display: inline;
+}
+.create-post button a{
+    text-decoration: none;
+    color: white;
+    display:inline;
+}
+.space {
+    margin: 50px auto;
+}

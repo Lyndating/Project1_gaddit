@@ -1,18 +1,24 @@
-<div>
+<div class="grey-bg container-fluid">
+  <section id="minimal-statistics">
   <% if ! @current_user.present? %>
+  <div class="container">
+    <div class="center jumbotron bg-light border rounded">
+      <%= image_tag'https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png'%>
     <h1>Welcome to Gaddit!</h1>
-    <p>Please <%= link_to "Log in", login_path %> or <%= link_to "Sign up", new_user_path %></p>
-  <% else %>
-    <h1 id = "user-header">Welcome <%= @current_user.name %>!</h1>
-    <div class="create-post">
-        <button class="btn btn-primary btn-lg shadow-sm text-white"><%= link_to "Create Post", new_post_path %> </button>
+    <h2>Please <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %> or <%= link_to "Sign up", new_user_path, class: "btn btn-lg btn-primary" %></p>
     </div>
-    <div>
-    <% Post.where(channel_id: @current_user.channels).limit(20).each do | post | %>
-      <div>
-        <p><%= link_to "#" + post.channel.name, channel_path(post.channel) %> @<%= time_ago_in_words(post.created_at) %>></p>
-        <h4 class="post-title">
-            Title: <%= link_to post.title, post_path(post.id)%>
+  <% else %>
+    <div class="create-post d-inline">
+      <h1 class = "mt-5 user-header d-inline p-3">Welcome <%= @current_user.name %>!</h1>
+        <button class="btn btn-primary btn-md shadow-sm text-white"><%= link_to "Create Post", new_post_path %> </button>
+    </div>
+    <div class ="space">
+    </div>
+    <% Post.where(channel_id: @current_user.channels).each do | post | %>
+      <div class="d-block p-2 bg-light mt-2 rounded ">
+        <h6><%= link_to "#" + post.channel.name, channel_path(post.channel) %> @<%= time_ago_in_words(post.created_at) %>></h6>
+        <h4 class="post-title ">
+            Title: <%= link_to post.title, post_path(post.id), class:"text-decoration-none text-black"%>
         </h4>
         <p>
             <%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %>
@@ -21,4 +27,5 @@
     <% end %>
     </div>
   <% end %>
+</div>
 </div>
