@@ -1,0 +1,9 @@
+
+
+<% if flash.any? %>
+    <%flash.each do |type, msg|%>
+        <div id="error_explaination">
+            <span class="red-text lighten-1"><%= msg %></span>
+        </div>
+    <% end %>
+<% end %>

@@ -12,7 +12,7 @@
                 <button><%= link_to "Edit", edit_post_path(@post)%></button>
                 <button><%= link_to "Delete", post_path(@post), :method => "delete", :data => {:confirm => "Are you sure?"} %></button>
             <% end %>
-            <span class="right light-blue-te darken-3 post-show-time">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
+            <span class="right light-blue-text darken-3 post-show-time">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
             <br>
 
         </div>

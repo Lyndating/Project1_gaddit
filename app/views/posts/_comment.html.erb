@@ -8,6 +8,6 @@
         <% if comment.user_id == @current_user.id %>
         <%=link_to "Delete", remove_comment_path(comment.id), :method => "post",class:"", role: "button",:data => {:confirm => "Are you sure?"} %>
         <% end %>
-        <span class="right light-blue-te darken-3">posted by <%= time_ago_in_words(comment.created_at)%>ago</span>
+        <span class="right light-blue-text darken-3">posted by <%= time_ago_in_words(comment.created_at)%>ago</span>
     </div>
 

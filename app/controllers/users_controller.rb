@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
-  before_action :check_for_login, except: [:new]
+  before_action :check_for_login, :except => [:new,:create]
   def new
     @user = User.new
   end
 
   def create
     @user = User.new user_params 
+    @user.avatar = "https://res.cloudinary.com/dgpwctfjt/image/upload/v1650127498/ptrghfmgfjz2qzmabwe4.png"
+    
     if @user.save
-      redirect_to users_path, :flash[:success] => "Your Account was Created Successfully!"
+      session[:user_id] = @user.id
+
+      redirect_to root_path
     else 
-      render :new, :flash[:danger] => "Invalid email/password combination" 
+      render :new
+      flash[:message] = "Invalid email/password combination" 
     end
   end
 

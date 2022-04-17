@@ -3,15 +3,16 @@ class SessionController < ApplicationController
   end
 
   def create
-    @user = User.find_by :email => params[:email]
-    if @user && @user.authenticate(params[:password])
+    user = User.find_by :email => params[:email]
+    raise hell
+    if user.present? && user.authenticate(params[:password])
       if params[:remember_me]
         cookies.signed[:user_id] = {value: @user.id, expires: 2.weeks.from_now}
       else
         cookies.signed[:user_id] = @user.id
       end
-      log_in @user
-      redirect_to root_path
+      session[:user_id] = user.id
+      redirect_to login_path
     else
       flash[:notice] = "Invalid email/password combination"
       render :new
