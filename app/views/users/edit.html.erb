@@ -1,18 +1,17 @@
 
 
 <div class="container">
-    <h4 class="user-profile-title light-blue-text darken-3">My Profile<h4>
-    <div class="col s12 m8 offset-m2 6 offset-13">
-        <div class="card-panel ligten-5 z-depth-1">
-            <div class="row valign-wrapper">
-                <div class="col s2">
-                    <% if @current_user.avatar.nil? %>
-                        <img src="https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png" alt="profile-image" width="100pxs">
-                    <% else %>
-                        <%= cl_image_tag  @current_user.avatar, style: "width: 100px", class: "light-blue-text darken-3"%>
-                    <% end %>
+    <div class="row">
+        <div class="col s3"> 
+            <h4 class="user-profile-title light-blue-text darken-3">My Profile<h4>
+            <% if @current_user.avatar.nil? %>
+                <img src="https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png" alt="profile-image" width="100pxs">
+            <% else %>
+                <div class="col" style="width:33vw">
+                    <%= cl_image_tag  @current_user.avatar, style: "width: 100px", class: "light-blue-text darken-3"%>
                 </div>
-            <div class="col s10">
+            <% end %>
+            <div class="">
                 <h5 class ="light-blue-text darken-3"><%= @current_user.name %></h5>
                 <h6>
                     <%= form_for(@user, :html => {:multipart => true}) do |f|%>
@@ -23,23 +22,22 @@
                 </h6>
             </div>
         </div>
-    </div>
-    <h4 class="user-profile-title light-blue-text darken-3">My Channel List<h4><button class="btn light-blue darken-3 rounded text-white right"><%= link_to "Add More", channels_path, class:"text-decoration-none" %></button>
-    
-    <div class="col s12 m8 offset-m2 16 offset-13">
-        <div class="card-panel ligten-5 z-depth-1">
-            <% @current_user.channels.each do |channel|%>
-                <div class="row valign-wrapper">
-                    <img class="" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", width= "30px">
-                    <span class="profiel-channel-name"style="margin-left: 15px"><%= link_to channel.name, channel_path(channel), class: "text-decoration-none d-line"%></span> 
-                </div>
+
+        <div class="col s2"> 
+        </div>  
+
+        <div class="col s7">
+            <h4 class="user-profile-title light-blue-text darken-3",, style="margin-left:30px">My Channel List<h4><button class="btn light-blue darken-3 rounded text-white right"><%= link_to "Add More", channels_path, class:"text-decoration-none white-text" %></button>
+            <div class="profile-channel-list">
+                <% @current_user.channels.each do |channel|%>
+                    <ul class="" style="margin-left: 45px">
+                        <li class = "valign-wrapper"><img class="" src="https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png" alt="Channel Logo", width= "30px">
+                        <span class="profiel-channel-name valign-wrapper" style="margin-left: 15px; font-size:20px;"><%= link_to channel.name, channel_path(channel), class: "text-decoration-none d-line"%></span>
+                        </li> 
+                    </ul>
                 <% end %>
-            </div> 
-        </div>    
+            </div>
+        </div>
     </div>
-    
-    </div>
-
-
 
 </div>

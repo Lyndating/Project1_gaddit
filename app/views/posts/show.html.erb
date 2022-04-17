@@ -5,7 +5,7 @@
             <h3 class ="card-title">Title:<%= @post.title%></h3>
             <h6>Posted by:<%= link_to @post.user.name, user_path(@post.user)%></h6>
             <p><%= @post.content %>
-            <p><%= cl_image_tag @post.links, :style => "width: 100px"%></p>
+            <p><%= cl_image_tag @post.links, :style => "max-width: 300px"%></p>
         </section>
         <div class="card-action">
             <%if @post.user_id == @current_user.id%>

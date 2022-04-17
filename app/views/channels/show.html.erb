@@ -1,5 +1,5 @@
 <div class="container">
-  <span class="channel-show light-blue-text darken-3"><%= @channel.name%></span><span style="margin-left: 30px"><%= @channel.users.count%> Members and <%= @channel.posts.count%> Posts</span>
+  <span class="channel-show light-blue-text darken-3">Channel: #<%= @channel.name%></span><span style="margin-left: 30px"><%= @channel.users.count%> Members and <%= @channel.posts.count%> Posts</span>
   <div>
     <div class="btn blue darken-1 white-text" style="margin: 20px auto"><%= link_to "Create Post", new_post_path(@channel_id), :class => "white-text" %> </div>
   </div>
