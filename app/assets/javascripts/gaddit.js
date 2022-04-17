@@ -18,5 +18,8 @@ $(document).ready(function () {
         return false;
     });
 
-    
+
+    $('select').formSelect();
+    M.textareaAutoResize($('#post-content'));
+
 });

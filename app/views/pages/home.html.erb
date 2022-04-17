@@ -1,31 +1,44 @@
-<div class="grey-bg container-fluid">
-  <section id="minimal-statistics">
-  <% if ! @current_user.present? %>
-  <div class="container">
-    <div class="center jumbotron bg-light border rounded">
-      <%= image_tag'https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png'%>
-    <h1>Welcome to Gaddit!</h1>
-    <h2>Please <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %> or <%= link_to "Sign up", new_user_path, class: "btn btn-lg btn-primary" %></p>
-    </div>
-  <% else %>
-    <div class="create-post d-inline">
-      <h1 class = "mt-5 user-header d-inline p-3">Welcome <%= @current_user.name %>!</h1>
-        <button class="btn btn-primary btn-md shadow-sm text-white"><%= link_to "Create Post", new_post_path %> </button>
-    </div>
-    <div class ="space">
-    </div>
-    <% Post.where(channel_id: @current_user.channels).each do | post | %>
-      <div class="d-block p-2 bg-light mt-2 rounded ">
-        <h6><i class="bi bi-collection"></i><%= link_to  post.channel.name, channel_path(post.channel) %> @<%= time_ago_in_words(post.created_at) %>></h6>
-        <h4 class="post-title ">
-            Title: <%= link_to post.title, post_path(post.id), class:"text-decoration-none text-black"%>
-        </h4>
-        <p>
-            <%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %>
-        </p>
+<div class="container">
+  <section style="width: 100%;">
+    <% if @current_user.nil? %>
+      <div class="row">
+        <div class="col s12" style="display:block; margin-left: 10px; margin-bottom: 20px; height: 240px; width: 100%;">
+          <div class="welcome-header" style="height: 160px;margin-bottom: 20px;">
+            <h1 class="welcome-title center-align light-blue-text darken-3">Welcome to Gaddit!</h1>
+            <p class="welcome-title-link light-blue-text darken-3 center-align">Join today: <%= link_to "Sign up", new_user_path,class:"btn light-blue darken-3" %></p>
+          </div>
+          <div class="card-action" style="height: 60px;">
+            
+          </div>
+        </div>
+        <div class="col s12">
+        <% Post.where(channel_id: Channel.all).limit(60).each do | post | %>
+          <div class="card" style="display: inline-block; margin-left: 10px; height: 220px; width: 440px;">
+            <div class="card-content" style="height: 160px;">
+            <span class="card-title"><%= link_to post.title, post_path(post.id) %></span>
+            <p><%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %></p>
+            </div>
+            <div class="card-action" style="height: 60px;">
+            <span><%= link_to "#" + post.channel.name, channel_path(post.channel) %></span>
+            <span class="right"><%= time_ago_in_words(post.created_at) %></span>
+            </div>
+          </div>
+          <% end %>      
+        </div>
+      </div> 
+    <% else %>
+    <% Post.where(channel_id: @current_user.channels).limit(60).each do | post | %>
+      <div class="card" style="display: inline-block; margin-left: 10px; height: 220px; width: 440px;">
+        <div class="card-content" style="height: 160px;">
+          <span class="card-title"><%= link_to post.title, post_path(post.id) %></span>
+          <p><%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %></p>
+        </div>
+        <div class="card-action" style="height: 60px;">
+          <span><%= link_to "#" + post.channel.name, channel_path(post.channel) %></span>
+          <span class="right"><%= time_ago_in_words(post.created_at) %></span>
+        </div>
       </div>
     <% end %>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </section>
 </div>

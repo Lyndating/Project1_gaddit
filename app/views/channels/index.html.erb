@@ -1,42 +1,19 @@
-<div class="grey-bg container-fluid">
-  <section id="minimal-statistics">
-    <div class="row">
-      <div class="col-12 mt-3 mb-1 ml-2">
-        <h1>All Channels</h1>
-      </div>
-    </div>
+<div class="container">
+  <h3>All Channels</h3>
 
-    <div class="row ml-2">
-      <div class="col-xl-6 col-md-12"> 
-        <% Channel.all.each do |channel|%>
-        <div class="card overflow-hidden">
-          <div class="card-content">
-            <div class="card-body cleartfix">
-              <div class="media align-items-stretch">
-                <div class="align-self-center ">               
-                  <img class="channel-img rounded-start" src="https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png" alt="Channel Logo", width= "40px">
-                </div>
-                <div class="media-body ml-2">
-                  <h3><%= link_to channel.name, channel_path(channel), class: "text-decoration-none d-line"%>
-                  </h3>
-                </div>
-                <div class="align-self-center">
-                  <% if @current_user.channel_ids.include? channel.id %>
-                  <span>
-                    <%= link_to "Join", join_channel_path(channel.id), :method => "post",class:"btn btn-outline-secondary disabled", role: "button" %>
-                    <%= link_to "Leave", leave_channel_path(channel.id), :method => "post", class:"btn btn-primary",role:"button" %>
-                  </span>
-                  <% else %>
-                  <span>
-                    <%= link_to "Join", join_channel_path(channel.id), :method => "post",class:"btn btn-primary",role:"button" %>
-                    <%= link_to "Leave", leave_channel_path(channel.id), :method => "post" ,class:"btn btn-outline-secondary disabled", role: "button"%>
-                  </span>
-                  <% end %>
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>  
+  <% Channel.all.each do |channel|%>
+    <div class="ul" style="list-style-type: none; margin: 5px 0px; width: 500px;">
+      <li style="margin-bottom: 15px;">
+        <img class="" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", width= "36px">
+        <%= link_to channel.name, channel_path(channel), class: ""%>
+        <span class="right">
+        <% if @current_user.channel_ids.include? channel.id %>
+          <%= link_to "Leave", leave_channel_path(channel.id), :method => "post" %>
+        <% else %>
+          <%= link_to "Join", join_channel_path(channel.id), :method => "post" %>
+        <% end %>
+        </span>
+      </li>
     </div>
-  </div>
+  <% end %>
+</div>

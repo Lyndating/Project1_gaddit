@@ -1,27 +1,40 @@
-
-<div class="container-sm bg-light">
-    <div class="wrapper">
-        <section class="new-post ">
-            <header class = "form-signin-heading text-center">Edit Post</header>
+<div class="new-post-form container col s6">
+    <h1 class = "new-post-header">Edit Post</h1>
+    <div class="row">
+        <section class="col s12">
             <%=form_for @post, :html =>{:multipart => true} do |f|%>
-                <div class="new-post-content  form-floacting mb-3">
-                    <%= f.label :channel_id, class: "form-label" %>
-                    <%= f.select :channel_id, 
-                    options_for_select(@current_user.channels.pluck(:name, :id), params[:channel_id]),{class:"form-select"}%>
-                    <%= f.label :title, class:"floatingInput" %>
-                    <%= f.text_field :title, class:"form-control"%>
-
+                <div class="row">
+                    <div class = "input-field col s6">
+                     <select>
+                        <option value="<%=@post.channel.id%>"selected>
+                            <%=@post.channel.name%>    
+                        </option>
+                    </select>
+                    <input type="hidden" name ="post[channel_id]" value="<%=@channel_id%>">
+                    <label>Channel</label>
+                    </div>
                 </div>
-                    <%=f.label :content, class:"floatingInput" %>
-                    <%=f.text_area :content, class:"form-control",:row => 10 %>
-
-
-                <div class ="new-post-options mb-3">
-                        <%= f.label "Image or Video:", :class => "form-label"%>                 
+                <div class="row">
+                    <div class="input-field col s12">
+                    <%= f.text_field :title, class:"validate"%>
+                    <%= f.label :title, class:"" %>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                    <%=f.text_area :content, class:"materialize-textarea",:row => 10 %>
+                    <%=f.label :content, class:"" %>
+                    </div>
+                </div> 
+                <div class ="row">
+                    <div class="input-field col s12">
+                        <%= f.label "Image or Video:", :class => "form-label"%><br><br> 
+                    </div>
+                    <div class="file-path-wrapper">                
                         <%= f.cl_image_upload :links, :class => "form-control"%>
-                    </p>
+                    </div>
                 </div>
-                <%= f.submit "Update",class:"btn btn-primary"%>
+                <%= f.submit "Update",class:"new-post-btn light-blue darken-3 btn rounded"%>
             <% end %>
             </form>
             

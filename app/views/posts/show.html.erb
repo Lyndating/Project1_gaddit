@@ -1,29 +1,36 @@
-<div class="row">
-    <aside class="col-md-4">
-        <section class="user_info">
-            <h1><%= @post.title%></h1>
-            <h3><%= link_to @post.user.name, user_path(@post.user)%></h3>
+<div class="container">
+    <aside class=" post-show card z-depth-2">
+        <section class="user_info card-content">
+            <p>Channel: <%=link_to @post.channel.name, channel_path(@post.channel)%></p>
+            <h3 class ="card-title">Title:<%= @post.title%></h3>
+            <h6>Posted by:<%= link_to @post.user.name, user_path(@post.user)%></h6>
+            <p><%= @post.content %>
+            <p><%= cl_image_tag @post.links, :style => "width: 100px"%></p>
         </section>
+        <div class="card-action">
+            <%if @post.user_id == @current_user.id%>
+                <button><%= link_to "Edit", edit_post_path(@post)%></button>
+                <button><%= link_to "Delete", post_path(@post), :method => "delete", :data => {:confirm => "Are you sure?"} %></button>
+            <% end %>
+            <span class="right light-blue-te darken-3 post-show-time">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
+            <br>
+
+        </div>
     </aside>
-
-    <div class="col-md-8">
-        <h3>Posted <%= time_ago_in_words(@post.created_at) %> ago.</h3>
-        <h3>Channel: <%=link_to @post.channel.name, channel_path(@post.channel)%></h3>
-        <p><%= @post.content %>
-        <p><%= cl_image_tag @post.links, :style => "width: 50px"%></p>
-
-    </div>
-        <%if @post.user_id == @current_user.id%>
-            <button><%= link_to "Edit", edit_post_path(@post)%></button>
-            <button><%= link_to "Delete", post_path(@post), :method => "delete", :data => {:confirm => "Are you sure?"} %></button>
-        <% end %>
-
 </div>
-<div>
-    <div>
-        <h4>Comment as <%= link_to @current_user.name, root_path(@current_user)%></h4>
-        <%= render partial: "comments/form", :comment => @comment %>
-        <%= render partial: "posts/comment", collection: @post.comments.reverse%>
-    </div>
+   
 
+<div class ="container">
+    <div class="card">
+        <div class=" new-comment-form card-content blue lighten-5 z-depth-2">
+            <h6>Comment as <%= link_to @current_user.name, root_path(@current_user)%></h6>
+            <%= render partial: "comments/form", :comment => @comment %>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <%= render partial: "posts/comment", collection: @post.comments.reverse %>
+    </div>
 </div>

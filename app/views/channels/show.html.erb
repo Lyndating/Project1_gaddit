@@ -1,29 +1,20 @@
-<h1 class ="uppercase tracking-wide  text-sky-600 font-bold">Channel: <%= @channel.name%></h1>
-
-<div>
-    <h4><%= @channel.users.count%>Members</h4>
-    <button class="btn btn-primary btn-lg shadow-sm text-white"><%= link_to "Create Post", new_post_path(@channel_id) %> </button>
-</div>
-
-<div class=" post-list space-y-5 bg-sky-200 rounded-xl">
-    <ul role="list" class="p-6 divide-y divide-slate-200 space-y-5">
+<div class="container">
+  <span class="channel-show light-blue-text darken-3"><%= @channel.name%></span><span style="margin-left: 30px"><%= @channel.users.count%> Members and <%= @channel.posts.count%> Posts</span>
+  <div>
+    <div class="btn blue darken-1 white-text" style="margin: 20px auto"><%= link_to "Create Post", new_post_path(@channel_id), :class => "white-text" %> </div>
+  </div>
+  <section style="width: 100%;">
     <% @channel.posts.order(created_at: :desc).each do |post|%>
-        <div class= "p-3 bg-white shadow-lg rounded-lg">
-        <li class="flex py-4 first:pt-0 last:pb-0">
-            <%= image_tag "https://avatars.githubusercontent.com/u/36207117?v=4",:class => "h-10 w-10 rounded-full"%>
-            <div class="ml-3 overflow-hidden">
-                <p class="text-sm font-medium text-slate-900">
-                    Title: <%= link_to post.title, post_path(post.id)%>
-                </p>
-                <p class="text-sm text-slate-500 truncate">
-                    Posted created at <%= time_ago_in_words(post.created_at) %> ago
-                </p>
-                <p class="text-sm text-slate-500 truncate">
-                    <%= truncate post.content, length: 80%>...<%=link_to "read more", post_path(post.id) %>
-                </p>
-            </div>
-        </li>
+      <div class="card" style="display: inline-block; height: 220px; width: 500px;">
+        <div class="card-content" style="height: 160px;">
+          <span class="card-title"><%= link_to post.title, post_path(post.id) %></span>
+          <p><%= truncate post.content, length: 150%>...<%=link_to "read more", post_path(post.id) %></p>
         </div>
+        <div class="card-action" style="height: 60px;">
+          <span><%= post.user.name %></span>
+          <span class="right"><%= time_ago_in_words(post.created_at) %></span>
+        </div>
+      </div>
     <% end %>
-    </ul>
+  </section>
 </div>

@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create post_params
+    puts post_params
     if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
       post.links = req["public_id"]
