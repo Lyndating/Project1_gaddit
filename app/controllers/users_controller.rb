@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     
     if @user.save
       session[:user_id] = @user.id
-
       redirect_to root_path
     else 
       render :new
@@ -30,9 +29,7 @@ class UsersController < ApplicationController
       puts params[:file]
       user.avatar = req["public_id"]
     end
-    # raise user.avatar
     user.update_attributes(:avatar => user.avatar)
-    # user.save
     redirect_to edit_user_path
   end
 
