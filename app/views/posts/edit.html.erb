@@ -10,7 +10,7 @@
                             <%=@post.channel.name%>    
                         </option>
                     </select>
-                    <input type="hidden" name ="post[channel_id]" value="<%=@channel_id%>">
+                    <input type="hidden" name ="post[channel_id]" value="<%=@post.channel_id%>">
                     <label>Channel</label>
                     </div>
                 </div>
@@ -30,8 +30,7 @@
                     <div class="input-field col s12">
                         <%= f.label "Image or Video:", :class => "form-label"%><br><br> 
                     </div>
-                    <div class="file-path-wrapper">                
-                        <%= f.cl_image_upload :links, :class => "form-control"%>
+                    <div class="file-path-wrapper">        <%= f.cl_image_upload :links, :class => "validate"%>
                     </div>
                 </div>
                 <%= f.submit "Update",class:"new-post-btn light-blue darken-3 btn rounded"%>

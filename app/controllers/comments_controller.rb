@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :check_for_login
   def new
     @comment = Comment.new(post_id: params[:id])
   end

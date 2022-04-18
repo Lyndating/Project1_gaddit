@@ -36,7 +36,11 @@ class PostsController < ApplicationController
 
   def update 
     post = Post.find params[:id]
-    post.update post_params
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      post.links = req["public_id"]
+    end
+    post.update_attributes(post_params)
     redirect_to post
   end
 

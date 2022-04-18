@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include RememberMe::Model
   before_action :check_for_login, :except => [:new,:create]
   def new
     @user = User.new

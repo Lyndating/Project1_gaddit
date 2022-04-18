@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    include SessionHelper    
+    include RememberMe::Controller  
     before_action :fetch_user
     add_flash_types :danger, :info, :warning, :success, :messages
 
