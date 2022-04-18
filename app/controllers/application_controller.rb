@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     include RememberMe::Controller  
     before_action :fetch_user
-    add_flash_types :danger, :info, :warning, :success, :messages
+    add_flash_types :notice
 
     private
     def fetch_user

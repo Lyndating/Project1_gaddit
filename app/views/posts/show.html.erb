@@ -3,7 +3,7 @@
         <section class="user_info card-content">
             <p>Channel: <%=link_to @post.channel.name, channel_path(@post.channel)%></p>
             <h3 class ="card-title">Title:<%= @post.title%></h3>
-            <h6>Posted by:<%= link_to @post.user.name, user_path(@post.user)%></h6>
+            <h6>Posted by: <%= cl_image_tag @post.user.avatar, style: "width:20px",class:"circle"%> <%= link_to @post.user.name, user_path(@post.user)%></h6>
             <p><%= @post.content %>
             <p><%= cl_image_tag @post.links, :style => "max-width: 300px"%></p>
         </section>
@@ -23,7 +23,7 @@
 <div class ="container">
     <div class="card">
         <div class=" new-comment-form card-content blue lighten-5 z-depth-2">
-            <h6>Comment as <%= link_to @current_user.name, root_path(@current_user)%></h6>
+            <h6>Comment as <%= cl_image_tag @post.user.avatar, style: "width:20px",class:"circle"%> <%= link_to @current_user.name, root_path(@current_user)%></h6>
             <%= render partial: "comments/form", :comment => @comment %>
         </div>
     </div>

@@ -25,9 +25,13 @@
             <li><%= link_to "All channels", channels_path %></li>
           </ul>
           <ul class="right">
+            <li style="margin-top:5px"><%= cl_image_tag @current_user.avatar, style: "width:25px", class:"circle"%></li>
             <li><%= link_to "Hi, #{@current_user.name}", edit_user_path(@current_user.id) %></li>
             <li><%= link_to "Log out", login_path, :method => "delete" %></li>
         <% else %>
+          <ul class="left">
+            <li><%= link_to "Home", root_path %></li>
+          </ul>
           <ul class="right">
             <li class="white-text"><%= link_to "Log in", login_path %></li>
             <li><%= link_to "Sign up", new_user_path %></li>

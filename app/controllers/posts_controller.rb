@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     post.user_id = @current_user.id
     post.save
     if post.save
-      flash[:success] = "Post created!"
+      flash[:notice] = "Post created!"
       redirect_to post_path(post)
     else
       render :new

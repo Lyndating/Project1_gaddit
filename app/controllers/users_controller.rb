@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  include RememberMe::Model
   before_action :check_for_login, :except => [:new,:create]
   def new
     @user = User.new
@@ -11,10 +10,12 @@ class UsersController < ApplicationController
     
     if @user.save
       session[:user_id] = @user.id
+      flash[:notice] = "Your account is created successfully!" 
       redirect_to root_path
     else 
+      flash.now[:notice] = "Invalid email/password combination" 
       render :new
-      flash[:message] = "Invalid email/password combination" 
+
     end
   end
 

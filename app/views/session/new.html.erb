@@ -11,8 +11,10 @@
         <%= email_field_tag :email, nil, :class => "form-control"%>
         <%= label_tag :password, nil, :class => "form-label"  %>
         <%= password_field_tag :password, nil, :class => "form-control" %>
-        <%= check_box_tag :remember_me, nil, :class => "form-check" %>
-        <span>Remember me on this computer</span>
+        <label>
+          <input type="checkbox" name="remember_me" />
+          <span>Remember me on this computer</span>
+        </label>
 
         <div class="d-grid gap-2 d-md-flex justify-content-end">
           <%= submit_tag "Log in", :class => "btn light-blue darken-3 right"%>
