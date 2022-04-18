@@ -57,7 +57,7 @@ end
 
 User.all.each do |user|
     user.channels.shuffle.take(8).each do |channel|
-        (1..15).each do |id|
+        (1..10).each do |id|
             post = Post.create!(
             #id: id,
                 title: Faker::Lorem.sentence(word_count: 5),

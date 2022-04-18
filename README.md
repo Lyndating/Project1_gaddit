@@ -18,7 +18,7 @@ Gaddit is a forum web application that will let you follow channels you are inte
 
 - [Try Gaddit here](https://gaddit.herokuapp.com)
 - You could skip creating an account by using the logins below: 
-  - Email: `ross.morar@heidenreich-christiansen.co`
+  - Email: `abby.hansen@stoltenberg.name`
   - Password: `chicken`
 
 
