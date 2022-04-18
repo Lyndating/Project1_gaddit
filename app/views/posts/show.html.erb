@@ -3,34 +3,40 @@
         <section class="user_info card-content">
             <p>Channel: <%=link_to @post.channel.name, channel_path(@post.channel)%></p>
             <h3 class ="card-title">Title:<%= @post.title%></h3>
-            <h6>Posted by: <%= cl_image_tag @post.user.avatar, style: "width:20px",class:"circle"%> <%= link_to @post.user.name, user_path(@post.user)%></h6>
-            <p><%= @post.content %>
+            <h6>Posted by: <%= cl_image_tag @post.user.avatar, style: "width:20px",class:"circle"%> <%=  @post.user.name%></h6>
+            <p><%= simple_format(@post.content) %>
             <p><%= cl_image_tag @post.links, :style => "max-width: 300px"%></p>
         </section>
         <div class="card-action">
-            <%if @post.user_id == @current_user.id%>
+            <span class="left light-blue-text darken-3"><%= @post.comments.count %> Comments</span>
+            <%if @current_user && @post.user_id == @current_user.id %>
                 <button><%= link_to "Edit", edit_post_path(@post)%></button>
                 <button><%= link_to "Delete", post_path(@post), :method => "delete", :data => {:confirm => "Are you sure?"} %></button>
             <% end %>
             <span class="right light-blue-text darken-3 post-show-time">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
             <br>
-
         </div>
     </aside>
-</div>
-   
 
-<div class ="container">
     <div class="card">
+        <% if @current_user %>
         <div class=" new-comment-form card-content blue lighten-5 z-depth-2">
             <h6>Comment as <%= cl_image_tag @post.user.avatar, style: "width:20px",class:"circle"%> <%= link_to @current_user.name, root_path(@current_user)%></h6>
             <%= render partial: "comments/form", :comment => @comment %>
         </div>
+    <%else %>
+            <div class=" new-comment-form card-content blue lighten-5 z-depth-2" style ="padding-bottom: 50px;">
+            <span style="font-size: 20px;">Log in or sign up to leave a comment</span>
+            <%= link_to "Sign up", new_user_path, class: "right waves-effect waves-light btn  light-blue darken-3"  %>
+           <%= link_to "Log in", login_path, class: "right waves-effect waves-light btn white light-blue-text darken-3", style: "margin-right:20px"%>            
+            </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="card">
-        <%= render partial: "posts/comment", collection: @post.comments.reverse %>
-    </div>
+    <% end %>
+    <% if @post.comments.count > 0  %>
+        <div class="card", style="padding-left: 5px; padding-top: 10px;">
+            <%= render partial: "posts/comment", collection: @post.comments.reverse %>        
+        </div>
+
+    <% end %>
 </div>

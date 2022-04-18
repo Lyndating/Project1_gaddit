@@ -1,13 +1,9 @@
 
-    <div class="post-show card z-depth-2">
-        <div class="user_info card-content">
-        <h6>Comment by <%= (comment.user.name)%></h6>
+    <h6 class="light-blue-text darken-1"><%= cl_image_tag comment.user.avatar, style: "width:20px",class:"circle"%> <%= (comment.user.name)%></h6>
+    <div class="card-content light-blue-text darken-3" style ="padding-bottom:50px; border-bottom: 1px solid lightgrey">       
         <p><%= comment.content %></p>
-    </div>
-    <div class="card-action">
-        <% if comment.user_id == @current_user.id %>
-        <%=link_to "Delete", remove_comment_path(comment.id), :method => "post",class:"", role: "button",:data => {:confirm => "Are you sure?"} %>
+        <% if @current_user && comment.user_id == @current_user.id %>
+        <%=link_to "Delete", remove_comment_path(comment.id), :method => "post",class:"left", role: "button",:data => {:confirm => "Are you sure?"} %>
         <% end %>
         <span class="right light-blue-text darken-3">posted by <%= time_ago_in_words(comment.created_at)%> ago</span>
     </div>
-

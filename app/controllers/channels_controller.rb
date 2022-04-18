@@ -1,5 +1,5 @@
 class ChannelsController < ApplicationController
-  before_action :check_for_login
+  before_action :check_for_login, :except => [:show]
   def index
   end
 

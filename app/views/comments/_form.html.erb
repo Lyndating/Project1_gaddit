@@ -3,5 +3,5 @@
     <%= f.text_field :content, col: "10", row: "10"%> 
     <%= f.hidden_field :user_id, value: @current_user.id%>
     <%= f.hidden_field :post_id, value: params[:id]  %>
-    <%= f.submit "Save", :class => "btn light-blue darken-3" %>
+    <%= f.submit "Comment", :class => "btn light-blue darken-3" %>
 <% end %>

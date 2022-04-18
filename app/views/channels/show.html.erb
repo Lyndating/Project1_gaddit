@@ -1,8 +1,10 @@
 <div class="container">
   <span class="channel-show light-blue-text darken-3">Channel: #<%= @channel.name%></span><span style="margin-left: 30px"><%= @channel.users.count%> Members and <%= @channel.posts.count%> Posts</span>
+  <% if @current_user %>
   <div>
     <div class="btn blue darken-1 white-text" style="margin: 20px auto"><%= link_to "Create Post", new_post_path(@channel_id), :class => "white-text" %> </div>
   </div>
+  <% end %>
   <section style="width: 100%;">
     <% @channel.posts.order(created_at: :desc).each do |post|%>
       <div class="card" style="display: inline-block; height: 220px; width: 500px;">

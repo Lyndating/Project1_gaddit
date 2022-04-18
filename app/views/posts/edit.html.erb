@@ -28,9 +28,11 @@
                 </div> 
                 <div class ="row">
                     <div class="input-field col s12">
-                        <%= f.label "Image or Video:", :class => "form-label"%><br><br> 
+                        <%= f.label "Replace Image:", :class => "form-label", :style => "margin-bottom:100px"%><br><br>                       
+                        <%= cl_image_tag @post.links, style: "width:100px;"%>
                     </div>
-                    <div class="file-path-wrapper">        <%= f.cl_image_upload :links, :class => "validate"%>
+                    <div class="file-path-wrapper">        
+                        <%= f.cl_image_upload :links, :class => "validate"%>
                     </div>
                 </div>
                 <%= f.submit "Update",class:"new-post-btn light-blue darken-3 btn rounded"%>
