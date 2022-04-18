@@ -6,9 +6,9 @@ class SessionController < ApplicationController
     user = User.find_by :email => params[:email]
     if user.present? && user.authenticate(params[:password])
       if params[:remember_me]
-        cookies.signed[:user_id] = {value: @user.id, expires: 2.weeks.from_now}
+        cookies.signed[:user_id] = {value: user.id, expires: 2.weeks.from_now}
       else
-        cookies.signed[:user_id] = @user.id
+        cookies.signed[:user_id] = user.id
       end
       session[:user_id] = user.id
       redirect_to login_path
