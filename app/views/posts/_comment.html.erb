@@ -1,7 +1,7 @@
 
     <h6 class="light-blue-text darken-1"><%= cl_image_tag comment.user.avatar, style: "width:20px",class:"circle"%> <%= (comment.user.name)%></h6>
     <div class="card-content light-blue-text darken-3" style ="padding-bottom:50px; border-bottom: 1px solid lightgrey">       
-        <p><%= comment.content %></p>
+        <p><%= comment.content %></p><br><br>
         <% if @current_user && comment.user_id == @current_user.id %>
         <%=link_to "Delete", remove_comment_path(comment.id), :method => "post",class:"left", role: "button",:data => {:confirm => "Are you sure?"} %>
         <% end %>
