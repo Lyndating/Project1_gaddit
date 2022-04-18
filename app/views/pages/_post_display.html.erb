@@ -5,7 +5,7 @@
             <p><%= truncate post.content, length: 100%></p>
         </div>
         <div class="card-action" style="height: 60px;">
-          <span><%= link_to "#" + post.channel.name, channel_path(post.channel) %></span>
+          <span style ="font-size: 12px;"><%= link_to "#" + post.channel.name, channel_path(post.channel) %></span>
           <span class="right"><%= time_ago_in_words(post.created_at) %></span>
         </div>
     </div>
