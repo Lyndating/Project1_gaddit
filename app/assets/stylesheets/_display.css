@@ -45,6 +45,10 @@
     font-weight: 600;
     margin: 10vh auto;
 }
+.hidden{
+    display: none;
+}
+
 /* new post form */
 .new-post-header{
     line-height: 1rem;

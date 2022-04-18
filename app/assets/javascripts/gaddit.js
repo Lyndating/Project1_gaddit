@@ -1,9 +1,8 @@
 $(document).ready(function () {
-
+    $('#back-to-top').addClass("hidden");
     /*--Scroll Back to Top Button Show--*/
-    $("#back-to-top").fadeOut();
     $(window).scroll(function(){
-        if ($(this).scrollTop() > 110) {
+        if ($(this).scrollTop() > 100) {
             $('#back-to-top').fadeIn();
         } else {
             $('#back-to-top').fadeOut();
