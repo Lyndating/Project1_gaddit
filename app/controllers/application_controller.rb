@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-    include RememberMe::Controller  
     before_action :fetch_user
     add_flash_types :notice
 
