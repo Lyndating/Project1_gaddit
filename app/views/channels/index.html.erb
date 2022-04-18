@@ -17,24 +17,3 @@
     </div>
   <% end %>
 </div>
-
-
-<div class="container">
-<h3>All Channels</h3>
-
-<% Channel.all.each do |channel|%>
-  <div class="ul" style="list-style-type: none; margin: 5px 0px; width: 500px;">
-    <li style="margin-bottom: 15px;">
-      <img class="" src="https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png" alt="Channel Logo", width= "36px">
-      <%= link_to channel.name, channel_path(channel), class: ""%>
-      <span class="right">
-      <% if @current_user.channel_ids.include? channel.id %>
-          <%= link_to "Leave", leave_channel_path(channel.id), :method => "post" %>
-      <% else %>
-          <%= link_to "Join", join_channel_path(channel.id), :method => "post" %>
-      <% end %>
-      </span>
-    </li>
-  </div>
-<% end %>
-</div>
