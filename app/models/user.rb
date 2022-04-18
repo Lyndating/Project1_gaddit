@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-    include RememberMe::Model
     validates :email, :uniqueness => true, :presence => true, :length => {maximum: 255}, :format => {with: URI::MailTo::EMAIL_REGEXP }
     validates :name, :presence => true, :length => {maximum: 50}
     validates :avatar, :presence => true
