@@ -27,8 +27,8 @@ Gaddit is a forum web application that will let you follow channels you are inte
 - You could sign up via the "sign up" button in the navigator bar and login.
 - If you checked the "remember me" box, your login status would last two weeks, except log out.
 - Once you log in successfully, all the latest posts under the followed channels will be displayed on the user's homepage in DESC order.
-- Click "read more" to check the post's content and all the comments underneath.
-- You could leave comments on any post page you are interested in, whether it is under the followed channel or not. 
+- Click "read more" to check the post's content and comments underneath.
+- You could leave comments on any post page you are interested in, whether under the followed channel or not. 
 - On each post page, you could create or delete your comment below the post. 
 - Click the channel name at the bottom of each post will head to the channel page.
 - Click "All channels" in the navigator to index all the channels. You could choose to join or leave the channels.
@@ -39,7 +39,7 @@ Gaddit is a forum web application that will let you follow channels you are inte
 
 - Created a scope flowchart showing all four main models: user, channel, post and comment
 - Draw out the model associations to clear the whole structure
-- List all the potential routes and features on each page
+- List all the potential routes and features on each page.
 
 
 ## Things learnt 
