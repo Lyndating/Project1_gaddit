@@ -27,7 +27,7 @@
         </div>  
 
         <div class="col s7">
-            <h4 class="user-profile-title light-blue-text darken-3",, style="margin-left:30px">My Channel List<h4><button class="btn light-blue darken-3 rounded text-white right"><%= link_to "Add More", channels_path, class:"text-decoration-none white-text" %></button>
+            <h4 class="user-profile-title light-blue-text darken-3",, style="margin-left:30px">My Channel List<h4>
             <div class="profile-channel-list">
                 <% @current_user.channels.each do |channel|%>
                     <ul class="" style="margin-left: 45px">
@@ -36,6 +36,7 @@
                         </li> 
                     </ul>
                 <% end %>
+                <button class="btn light-blue darken-3 rounded text-white right"><%= link_to "Add More", channels_path, class:"text-decoration-none white-text" %></button>
             </div>
         </div>
     </div>
