@@ -5,11 +5,14 @@
     <div class="ul" style="list-style-type: none; margin: 5px 0px; width: 500px;">
       <li class=""style="margin-bottom: 15px;">
         <img class="" src="https://res.cloudinary.com/dgpwctfjt/image/upload/v1649905020/spn0au6q3kndekxbkpg0.png" alt="Channel Logo", width= "20px">
-        <%= link_to channel.name, channel_path(channel), class: ""%>
+        <% if @current_user.channel_ids.include? channel.id %>
+          <%= link_to channel.name, channel_path(channel), class: "grey-text darken-4"%>
         <span class="right">
-          <% if @current_user.channel_ids.include? channel.id %>
-            <%= link_to "Leave", leave_channel_path(channel.id), :method => "post" %>
+          <%= link_to "Leave", leave_channel_path(channel.id), :method => "post", class:"grey-text darken-4" %>
+        </span>  
           <% else %>
+            <%= link_to channel.name, channel_path(channel), class: ""%>
+            <span class="right">
             <%= link_to "Join", join_channel_path(channel.id), :method => "post" %>
           <% end %>
         </span>

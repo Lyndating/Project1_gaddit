@@ -2,13 +2,14 @@
     <aside class=" post-show card z-depth-2">
         <section class="user_info card-content">
             <p>Channel: <%=link_to @post.channel.name, channel_path(@post.channel)%></p>
-            <h3 class ="card-title">Title:<%= @post.title%></h3>
-            <h6>Posted by: <%= cl_image_tag @post.user.avatar, style: "width:20px",class:"circle"%> <%=  @post.user.name%></h6>
-            <p><%= simple_format(@post.content) %>
+            <h6 class="rights">Posted by: <%= cl_image_tag @post.user.avatar, style: "width:20px",class:"circle"%> <%=  @post.user.name%></h6>
+            <h1 class ="card-title" style ="font-weight:800"><%= @post.title.capitalize%></h1>
+
+            <p><%= simple_format(@post.content) %><br><br>
             <p><%= cl_image_tag @post.links, :style => "max-width: 300px"%></p>
         </section>
         <div class="card-action">
-            <span class="left light-blue-text darken-3"><%= @post.comments.count %> Comments</span>
+            <span style ="margin-right:10px;"class="left light-blue-text darken-3"><%= @post.comments.count %> Comments</span>
             <%if @current_user && @post.user_id == @current_user.id %>
                 <button><%= link_to "Edit", edit_post_path(@post)%></button>
                 <button><%= link_to "Delete", post_path(@post), :method => "delete", :data => {:confirm => "Are you sure?"} %></button>
