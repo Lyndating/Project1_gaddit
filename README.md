@@ -22,6 +22,11 @@ Gaddit is a forum web application that will let you follow channels you are inte
   - Password: `chicken`
 
 
+
+## Scope
+
+![Scope](./scope.png)
+
 ## Features
 
 - You could sign up via the "sign up" button in the navigator bar and login.
