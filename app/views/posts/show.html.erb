@@ -6,7 +6,7 @@
             <h1 class ="card-title" style ="font-weight:800"><%= @post.title.capitalize%></h1>
 
             <p><%= simple_format(@post.content) %><br><br>
-            <p><%= cl_image_tag @post.links, :style => "max-width: 300px"%></p>
+            <p><%= cl_image_tag @post.links, :class => "materialboxed",:style => "max-width: 300px"%></p>
         </section>
         <div class="card-action">
             <span style ="margin-right:10px;"class="left light-blue-text darken-3"><%= @post.comments.count %> Comments</span>
