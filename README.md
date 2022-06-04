@@ -61,3 +61,11 @@ Gaddit is a forum web application that will let you follow channels you are inte
   - Reset passwords
   - Reply comments 
   - Create new channels
+
+## ScreenShot
+<span><img src="../gaddit/app/assets/images/W-HomePage.png"/></span>
+<span><img src="../gaddit/app/assets/images/W-ProfilePage.png"></span>
+<span><img src="../gaddit/app/assets/images/W-userHomePage.png"></span>
+<span><img src="../gaddit/app/assets/images/W-ChannelShowPage.png"></span>
+<span><img src="../gaddit/app/assets/images/W-ChannelPage.png"></span>
+<span><img src="../gaddit/app/assets/images/M-HomePage.png" ><img src="../gaddit/app/assets/images/M-Post&Comment.png"></span>
