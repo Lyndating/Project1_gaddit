@@ -60,7 +60,19 @@
     float: right;
 }
 
-
+.post-container {
+    width: 93%;
+}
+@media (max-width: 995px) {
+    .home_page_post_display{
+        width: 41vw;
+    }
+}
+@media (max-width: 800px) {
+    .home_page_post_display {
+        width: 80vw;
+    }
+}
 /* post show page */
 
 .user_info {
