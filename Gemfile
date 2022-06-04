@@ -53,3 +53,5 @@ gem "faker"
 gem "time_ago_in_words"
 gem "jquery-rails"
 gem "cloudinary"
+
+gem "ransack", "~> 2.5"

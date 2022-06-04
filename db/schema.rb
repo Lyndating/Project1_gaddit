@@ -54,3 +54,43 @@ ActiveRecord::Schema.define(version: 2022_04_15_045847) do
   end
 
 end
+
+
+create_table "categories", force: :cascade do |t|
+  t.text "name"
+  t.text "icon"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "families", force: :cascade do |t|
+  t.text "name"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "transactions", force: :cascade do |t|
+  t.integer "type"
+  t.decimal "amount"
+  t.text "title"
+  t.text "description"
+  t.datetime "date"
+  t.text "receipt"
+  t.integer "category_id"
+  t.integer "user_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "users", force: :cascade do |t|
+  t.text "first_name"
+  t.text "last_name"
+  t.text "email"
+  t.string "password_digest"
+  t.string "family_id"
+  t.string "integer"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+end

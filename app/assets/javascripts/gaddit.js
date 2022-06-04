@@ -20,5 +20,9 @@ $(document).ready(function () {
 
     $('select').formSelect();
     M.textareaAutoResize($('#post-content'));
+    $('.materialboxed').materialbox();
+
+   
+ 
 
 });
