@@ -49,35 +49,58 @@
     display: none;
 }
 .post-container {
-    width: 93%;
+    width: 95%;
 }
 .home_page_post_display{
-    width: 44vw;
+    width: 26vw;
+    min-width: 392px;
 }
+.home_page_post_display >.card-action>span{
+    font-size: 12px;
+}
+.post-list {
+    display:grid;
+    grid-template-columns: auto auto auto;
+}
+@media screen and (max-width: 1280px) {
+    .post-container{
+        width: 95%;
+    }
+    .post-list {
+        grid-template-columns: auto auto;
+        
+    }
 
+    .home_page_post_display {
+        width: 44vw;
+    }
+}
 @media screen and (max-width: 875px) {
     .post-container {
         width: 95%;
+    }
+
+    .post-list {
+        grid-template-columns: auto;
     }
     .home_page_post_display {
         width: 80vw;
     }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 430px) {
     .post-container { 
         width: 85%;
     }
     .home_page_post_display {
         width: 80vw;
         height: 270px;
+        min-width: 340px;
     }
-    .home_page_post_display >.card-content>span {
-        font-size: 35px;
+    .home_page_post_display>.card-action>span {
+        font-size: 11px;
     }
-    .home_page_post_display>.card-content>p {
-        font-size: 25px;
-    }
+
 }
 
 /* new post form */
