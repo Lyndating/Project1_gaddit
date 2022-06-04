@@ -48,6 +48,37 @@
 .hidden{
     display: none;
 }
+.post-container {
+    width: 93%;
+}
+.home_page_post_display{
+    width: 44vw;
+}
+
+@media screen and (max-width: 875px) {
+    .post-container {
+        width: 95%;
+    }
+    .home_page_post_display {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .post-container { 
+        width: 85%;
+    }
+    .home_page_post_display {
+        width: 80vw;
+        height: 270px;
+    }
+    .home_page_post_display >.card-content>span {
+        font-size: 35px;
+    }
+    .home_page_post_display>.card-content>p {
+        font-size: 25px;
+    }
+}
 
 /* new post form */
 .new-post-header{
